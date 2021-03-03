@@ -25,16 +25,14 @@
 
       <v-card>
         <v-card-text>
-          <v-text-field label="search"> </v-text-field>
+          <v-text-field v-model="search" label="search"> </v-text-field>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
 
           <v-btn @click="getRecipes()">search </v-btn>
-
-
         </v-card-actions>
-        <div v-for="(list, idx) in recipeList" :key="idx">{{list.title}}</div>
+        <div v-for="(list, idx) in recipeList" :key="idx">{{ list.title }}</div>
       </v-card>
     </v-main>
 
@@ -60,6 +58,10 @@ export default {
       recipeList: [],
     };
   },
+  props: {
+    search: String
+  },
+
 
   /*mounted() {
     recipesService.getAllRecipes().then((response) => {
@@ -68,12 +70,12 @@ export default {
   },
 };*/
 
-methods: {
+  methods: {
     getRecipes: function() {
       recipesService
-        .getAllRecipes()
+        .getAllRecipes(this.search)
         .then((response) => {
-          this.recipeList = response.data
+          this.recipeList = response.data;
           console.log(response.data[0]);
         })
         .catch((err) => {
