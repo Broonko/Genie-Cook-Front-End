@@ -31,7 +31,10 @@
           <v-spacer></v-spacer>
 
           <v-btn @click="getRecipes()">search </v-btn>
+
+
         </v-card-actions>
+        <div v-for="(list, idx) in recipeList" :key="idx">{{list.title}}</div>
       </v-card>
     </v-main>
 
@@ -70,10 +73,11 @@ methods: {
       recipesService
         .getAllRecipes()
         .then((response) => {
-          console.log(response.data);
+          this.recipeList = response.data
+          console.log(response.data[0]);
         })
         .catch((err) => {
-          console.log("soooooooooss" + err);
+          console.log(err);
         });
       //console.log(this.recipesService);
     },
