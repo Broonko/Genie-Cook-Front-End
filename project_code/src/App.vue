@@ -54,11 +54,28 @@ export default {
     return {
       searchIngredients: "",
       searchclick: false,
+      recipeList: [],
     };
   },
-  methods: {
+
+  /*mounted() {
+    recipesService.getAllRecipes().then((response) => {
+      console.log(response.data);
+    });
+  },
+};*/
+
+methods: {
     getRecipes: function() {
-      recipesService;
+      recipesService
+        .getAllRecipes()
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log("soooooooooss" + err);
+        });
+      //console.log(this.recipesService);
     },
   },
 };
