@@ -1,49 +1,47 @@
 <template>
-  <v-app>
-    <v-container class="fluid">
-      <v-row>
-        <v-col class=" d-flex flex-wrap">
-          <v-card
-            width="250"
-            outlined
-            class=" d-flex flex-wrap my-5 mx-5"
-            cols="4"
-            v-for="(list, idx) in recipeList"
-            :key="idx"
-          >
-            <v-img height="250" width="250" :src="list.image"></v-img>
+  <v-container class="fluid">
+    <v-row>
+      <v-col class=" d-flex flex-wrap">
+        <v-card
+          width="250"
+          outlined
+          class=" d-flex flex-wrap my-5 mx-5"
+          cols="4"
+          v-for="(list, idx) in recipeList"
+          :key="idx"
+        >
+          <v-img height="250" width="250" :src="list.image"></v-img>
 
-            <v-card-title>{{ list.title }}</v-card-title>
+          <v-card-title>{{ list.title }}</v-card-title>
 
-            <v-card-text>
-              <v-row class="d-flex " align="center">
-                <v-rating
-                  class="mx-4"
-                  :value="4.5"
-                  color="amber"
-                  dense
-                  half-increments
-                  readonly
-                  size="14"
-                ></v-rating>
+          <v-card-text>
+            <v-row class="d-flex " align="center">
+              <v-rating
+                class="mx-4"
+                :value="4.5"
+                color="amber"
+                dense
+                half-increments
+                readonly
+                size="14"
+              ></v-rating>
 
-                <div class="grey--text ml-4">
-                  4.5 (413)
-                </div>
-              </v-row>
-              <br />
-              <br />
-
-              <div>
-                Small plates, salads & sandwiches - an intimate setting with 12
-                indoor seats plus patio seating.
+              <div class="grey--text ml-4">
+                4.5 (413)
               </div>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-app>
+            </v-row>
+            <br />
+            <br />
+
+            <div>
+              Small plates, salads & sandwiches - an intimate setting with 12
+              indoor seats plus patio seating.
+            </div>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -55,9 +53,8 @@ export default {
       recipeList: [],
     };
   },
-  props: {
-    search: String,
-  },
+  props: ["search"],
+
   /*methods: {
     getRecipes: function() {
       recipesService
@@ -74,7 +71,7 @@ export default {
   },*/
 
   mounted() {
-    console.log("hola");
+    console.log(this.search);
     recipesService
       .getAllRecipes(this.search)
       .then((response) => {

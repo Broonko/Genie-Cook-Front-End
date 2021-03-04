@@ -42,39 +42,9 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-main>
-      <v-row justify="center">
-        <v-col cols="12" sm="6" md="3">
-          <v-text-field
-            v-model="search"
-            label="search"
-            placeholder="Introduce your ingredients"
-            outlined
-            rounded
-          ></v-text-field>
-          <router-link :to="{ name: 'Search', params: { search: search } }">
-            <v-btn rounded block>search</v-btn>
-           
-          </router-link>
-        </v-col>
-      </v-row>
-      <router-view></router-view>
 
-      <!--<v-row>
-        <v-col
-          class="d-flex"
-          cols="4"
-          v-for="(list, idx) in recipeList"
-          :key="idx"
-          >{{ list.title }} id:{{ list.id }}
-          <v-img
-            class="d-flex"
-            height="200"
-            width="200"
-            :src="list.image"
-          ></v-img>
-        </v-col>
-      </v-row>-->
+    <v-main>
+      <router-view></router-view>
     </v-main>
 
     <v-footer class="grey lighten-3" color="light grey">
@@ -88,14 +58,8 @@
 <script>
 export default {
   name: "App",
-
-  components: {},
-
   data() {
-    return {
-      search: '',
-      recipeList: [],
-    };
+    return {};
   },
 };
 </script>
