@@ -72,11 +72,56 @@
           ></v-img>
         </v-col>
       </v-row>-->
-
-      <v-row row wrap>
-        <v-col>
+    <spacer></spacer>
+      <v-container>
+      <v-row no-gutters>
+        <v-col md="6">
           <v-card class="d-flex"
-          cols="4"
+          cols=""
+          v-for="(list, idx) in recipeList"
+          :key="idx">
+          <v-img
+            
+            height="250"
+            width="250"
+            :src="list.image"
+          ></v-img>
+
+          <v-card-title>{{ list.title }}</v-card-title>
+
+          <v-card-text>
+            <v-row class="d-flex " align="center" >
+              <v-rating
+                :value="4.5"
+                color="amber"
+                dense
+                half-increments
+                readonly
+                size="14"
+              ></v-rating>
+
+              <div class="grey--text ml-4">
+                4.5 (413)
+              </div>
+            </v-row>
+
+
+            <div>
+              Small plates, salads & sandwiches - an intimate setting with 12
+              indoor seats plus patio seating.
+            </div>
+          </v-card-text>
+
+          <v-divider class="mx-4"></v-divider>
+          </v-card>
+          
+        </v-col>
+     
+      
+    
+      <v-col md="6">
+          <v-card class="d-flex"
+          cols=""
           v-for="(list, idx) in recipeList"
           :key="idx">
           <v-img
@@ -116,6 +161,8 @@
           
         </v-col>
       </v-row>
+    </v-container>
+    
     </v-main>
 
     <v-footer class="grey lighten-3" color="light grey">
