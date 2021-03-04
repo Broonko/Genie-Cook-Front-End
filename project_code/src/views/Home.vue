@@ -9,12 +9,9 @@
           outlined
           rounded
         ></v-text-field>
-        <router-link
-          rounded
-          block
-          :to="{ name: 'Search', params: { search: search } }"
-          >search</router-link
-        >
+        <router-link :to="{ name: 'Search', params: { search: search } }">
+          <v-btn rounded block>search</v-btn>
+        </router-link>
       </v-col>
     </v-row>
 

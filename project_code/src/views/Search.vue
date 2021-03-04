@@ -51,6 +51,7 @@ export default {
   data() {
     return {
       recipeList: [],
+      overlay: false,
     };
   },
   props: ["search"],

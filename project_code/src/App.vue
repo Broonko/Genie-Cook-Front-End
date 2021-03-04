@@ -9,16 +9,11 @@
             dense
             class="grey lighten-3 blue--text"
           >
-            <!--<v-icon
-              class="mt-8 "
-              color="blue"
-              large
-              dark
-              v-bind="attrs"
-              v-on="on"
-            >
-              mdi-home
-            </v-icon>-->
+            <router-link class="my-auto" to="/">
+              <v-icon color="primary" large dark>
+                mdi-home
+              </v-icon>
+            </router-link>
 
             <v-spacer></v-spacer>
 
@@ -31,14 +26,34 @@
             </v-tabs>
             <v-spacer></v-spacer>
 
-            <v-btn icon>
+            <div class="my-auto">
+              <!--<v-btn class="mt-12" color="primary" @click="overlay = !overlay">
+                Show Overlay
+              </v-btn>-->
+
+              <v-btn color="primary" fab dark @click="overlay = !overlay">
+                <v-icon>mdi-account-circle</v-icon>
+              </v-btn>
+            </div>
+
+            <!--<v-btn>
               <v-icon class="blue--text">mdi-magnify</v-icon>
             </v-btn>
 
             <v-btn icon>
               <v-icon class="blue--text">mdi-dots-vertical</v-icon>
-            </v-btn>
+            </v-btn>-->
           </v-toolbar>
+          <v-overlay
+            :absolute="absolute"
+            :opacity="opacity"
+            :value="overlay"
+            :z-index="zIndex"
+          >
+            <v-btn color="primary" @click="overlay = false">
+              Hide Overlay
+            </v-btn>
+          </v-overlay>
         </v-card>
       </v-col>
     </v-row>
@@ -59,7 +74,12 @@
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      absolute: false,
+      opacity: 0.46,
+      overlay: false,
+      zIndex: 5,
+    };
   },
 };
 </script>
