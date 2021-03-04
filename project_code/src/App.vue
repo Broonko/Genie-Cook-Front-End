@@ -8,9 +8,8 @@
             prominent
             dense
             class="grey lighten-3 blue--text"
-            app
           >
-            <v-icon
+            <!--<v-icon
               class="mt-8 "
               color="blue"
               large
@@ -19,7 +18,7 @@
               v-on="on"
             >
               mdi-home
-            </v-icon>
+            </v-icon>-->
 
             <v-spacer></v-spacer>
 
@@ -53,9 +52,13 @@
             outlined
             rounded
           ></v-text-field>
-          <v-btn rounded block @click="getRecipes()">search</v-btn>
+          <router-link :to="{ name: 'Search', params: { search: search } }">
+            <v-btn rounded block>search</v-btn>
+           
+          </router-link>
         </v-col>
       </v-row>
+      <router-view></router-view>
 
       <!--<v-row>
         <v-col
@@ -72,46 +75,6 @@
           ></v-img>
         </v-col>
       </v-row>-->
-
-      <v-row class="d-flex ">
-        <v-col flex-wrap>
-          <v-card
-            outlined
-            class="flex-wrap"
-            cols="4"
-            v-for="(list, idx) in recipeList"
-            :key="idx"
-          >
-            <v-img mt="10" height="250" width="250" :src="list.image"></v-img>
-
-            <v-card-title>{{ list.title }}</v-card-title>
-
-            <v-card-text>
-              <v-row class="d-flex " align="center">
-                <v-rating
-                  :value="4.5"
-                  color="amber"
-                  dense
-                  half-increments
-                  readonly
-                  size="14"
-                ></v-rating>
-
-                <div class="grey--text ml-4">
-                  4.5 (413)
-                </div>
-              </v-row>
-              <br />
-              <br />
-
-              <div>
-                Small plates, salads & sandwiches - an intimate setting with 12
-                indoor seats plus patio seating.
-              </div>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
     </v-main>
 
     <v-footer class="grey lighten-3" color="light grey">
@@ -123,7 +86,6 @@
 </template>
 
 <script>
-import recipesService from "@/services/recipesService";
 export default {
   name: "App",
 
@@ -131,36 +93,9 @@ export default {
 
   data() {
     return {
-      show: false,
-      searchIngredients: "",
-      searchclick: false,
-      recipeList: []
+      search: '',
+      recipeList: [],
     };
   },
-  props: {
-    search: String
-  },
-
-  /*mounted() {
-    recipesService.getAllRecipes().then((response) => {
-      console.log(response.data);
-    });
-  },
-};*/
-
-  methods: {
-    getRecipes: function() {
-      recipesService
-        .getAllRecipes(this.search)
-        .then((response) => {
-          this.recipeList = response.data;
-          console.log(response.data[0]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      //console.log(this.recipesService);
-    }
-  }
 };
 </script>

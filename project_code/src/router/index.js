@@ -6,11 +6,11 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/search",
+    path: "/search/:search",
     name: "Search",
     components: Search,
-    props: true
-  }
+    props: true,
+  },
   /*{
     path: "/about",
     name: "About",
@@ -25,7 +25,7 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;
