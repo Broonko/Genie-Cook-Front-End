@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <v-main>
+    
       <v-card color="grey-4" flat height="200px" tile>
-        <v-toolbar dense dark>
+        <v-toolbar  prominent dense dark>
           <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
           <v-toolbar-title>Title</v-toolbar-title>
@@ -22,18 +22,32 @@
           </v-btn>
         </v-toolbar>
       </v-card>
+      <v-main>
+        <v-row justify="center">
+      <v-col
+          cols="12"
+          sm="6"
+          md="3"
+        >
+          <v-text-field 
+            v-model="search" 
+            label="search"
+            placeholder="Introduce your ingredients"
+            outlined
+            
+          ></v-text-field>
+          <v-btn block @click="getRecipes()">search </v-btn>
+        </v-col>
+        </v-row>
+        
+     
+        <v-row>
+          <v-col class="d-flex" cols="4" v-for="(list, idx) in recipeList" :key="idx">{{ list.title }} {{ list.id }} 
+            <v-img height="200" width="200" :src="list.image"></v-img>
+            </v-col>
+            </v-row>
+          
 
-      <v-card>
-        <v-card-text>
-          <v-text-field v-model="search" label="search"> </v-text-field>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-
-          <v-btn @click="getRecipes()">search </v-btn>
-        </v-card-actions>
-        <div v-for="(list, idx) in recipeList" :key="idx">{{ list.title }}</div>
-      </v-card>
     </v-main>
 
     <v-footer padless dark>
@@ -53,6 +67,7 @@ export default {
 
   data() {
     return {
+      show: false,
       searchIngredients: "",
       searchclick: false,
       recipeList: [],
