@@ -42,7 +42,7 @@
         
      
         <v-row>
-          <v-col class="d-flex" cols="4" v-for="(list, idx) in recipeList" :key="idx">{{ list.title }} {{ list.id }} 
+          <v-col class="d-flex" cols="4" v-for="(list, idx) in recipeList" :key="idx">{{ list.title }} {{ list.id }} {{}}
             <v-img height="200" width="200" :src="list.image"></v-img>
             </v-col>
             </v-row>
