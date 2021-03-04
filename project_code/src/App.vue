@@ -73,47 +73,43 @@
         </v-col>
       </v-row>-->
 
-      <v-row row wrap>
-        <v-col>
-          <v-card class="d-flex"
-          cols="4"
-          v-for="(list, idx) in recipeList"
-          :key="idx">
-          <v-img
-            
-            height="250"
-            width="250"
-            :src="list.image"
-          ></v-img>
+      <v-row class="d-flex ">
+        <v-col flex-wrap>
+          <v-card
+            outlined
+            class="flex-wrap"
+            cols="4"
+            v-for="(list, idx) in recipeList"
+            :key="idx"
+          >
+            <v-img mt="10" height="250" width="250" :src="list.image"></v-img>
 
-          <v-card-title>{{ list.title }}</v-card-title>
+            <v-card-title>{{ list.title }}</v-card-title>
 
-          <v-card-text>
-            <v-row class="d-flex " align="center" >
-              <v-rating
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-              ></v-rating>
+            <v-card-text>
+              <v-row class="d-flex " align="center">
+                <v-rating
+                  :value="4.5"
+                  color="amber"
+                  dense
+                  half-increments
+                  readonly
+                  size="14"
+                ></v-rating>
 
-              <div class="grey--text ml-4">
-                4.5 (413)
+                <div class="grey--text ml-4">
+                  4.5 (413)
+                </div>
+              </v-row>
+              <br />
+              <br />
+
+              <div>
+                Small plates, salads & sandwiches - an intimate setting with 12
+                indoor seats plus patio seating.
               </div>
-            </v-row>
-
-
-            <div>
-              Small plates, salads & sandwiches - an intimate setting with 12
-              indoor seats plus patio seating.
-            </div>
-          </v-card-text>
-
-          <v-divider class="mx-4"></v-divider>
+            </v-card-text>
           </v-card>
-          
         </v-col>
       </v-row>
     </v-main>
@@ -138,11 +134,11 @@ export default {
       show: false,
       searchIngredients: "",
       searchclick: false,
-      recipeList: [],
+      recipeList: []
     };
   },
   props: {
-    search: String,
+    search: String
   },
 
   /*mounted() {
@@ -164,7 +160,7 @@ export default {
           console.log(err);
         });
       //console.log(this.recipesService);
-    },
-  },
+    }
+  }
 };
 </script>
