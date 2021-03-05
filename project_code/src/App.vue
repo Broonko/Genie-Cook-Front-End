@@ -59,7 +59,7 @@
     </v-main>
 
     <v-footer class="grey lighten-3" color="light grey">
-      <v-col class="text-center" cols="12">
+      <v-col class="text-center blue--text" cols="12">
         {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
       </v-col>
     </v-footer>
