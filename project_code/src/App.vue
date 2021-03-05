@@ -16,9 +16,11 @@
         <v-spacer></v-spacer>
         
 
-        <v-tabs justify="center" >
+        <v-tabs justify="center">
           <v-spacer></v-spacer>
+          <router-link class="my-auto nav-link" to="/tips">
           <v-tab>Tips & Ideas</v-tab>
+          </router-link>
 
           <v-spacer></v-spacer>
         </v-tabs>
