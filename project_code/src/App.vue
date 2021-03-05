@@ -14,9 +14,8 @@
         </router-link>
 
         <v-spacer></v-spacer>
-        
 
-        <v-tabs justify="center" >
+        <v-tabs justify="center">
           <v-spacer></v-spacer>
           <v-tab>Tips & Ideas</v-tab>
 
@@ -29,19 +28,14 @@
                 Show Overlay
               </v-btn>-->
 
-          <v-btn color="blue lighten-1" fab dark @click="overlay = !overlay" to="/Signup">
-            <v-icon>mdi-account-circle</v-icon>
-            <router-link class="my-auto" to="/Signup">
-            </router-link>
+          <v-btn color="blue lighten-1" fab dark @click="overlay = !overlay">
           </v-btn>
-        <v-spacer></v-spacer>
+          <v-spacer></v-spacer>
         </div>
-         
-          
-          <v-icon color="primary">
-            SignUp
-          </v-icon>
-        
+
+        <v-icon color="primary">
+          SignUp
+        </v-icon>
 
         <!--<v-btn>
               <v-icon class="blue--text">mdi-magnify</v-icon>

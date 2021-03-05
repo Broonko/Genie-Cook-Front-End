@@ -1,7 +1,7 @@
 <template>
   <v-container class="backgr" fill-height fluid>
-    <v-row justify="center" >
-      <v-col cols="12" sm="6" md="3" >
+    <v-row justify="center">
+      <v-col cols="12" sm="6" md="3">
         <v-text-field
           v-model="search"
           label="search"
@@ -47,7 +47,7 @@ export default {
   background: url("../assets/genio1.png") no-repeat center center fixed;
   background-size: 75%;
   display: flex;
-  
+
   margin-top: -100px;
 }
 </style>
