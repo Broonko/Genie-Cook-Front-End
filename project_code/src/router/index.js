@@ -2,8 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search.vue";
 import Home from "../views/Home.vue";
-import Profile from "../views/Profile.vue";
-import Tips from "../views/Tips.vue";
+import Signup from  "../views/Signup.vue";
 
 Vue.use(VueRouter);
 
@@ -20,17 +19,15 @@ const routes = [
     props: true,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
-    
+    path: "/signup",
+    name: "Signup",
+    component: Signup,
   },
-  {
-    path: "/tips",
-    name: "Tips",
-    component: Tips,
-    
-  },
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  // },
   /*{
     path: "/about",
     name: "About",

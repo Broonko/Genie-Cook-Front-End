@@ -11,4 +11,18 @@ export default {
     const response = await api.get(`/recipes/${search}`);
     return response;
   },
-};
+}
+// export default {
+//   async getAllRecipes(signup) {
+//     //let query = "chicken";
+//     console.log(signup)
+  
+//   },
+// }
+// export default {
+//   async getAllRecipes(search) {
+//     //let query = "chicken";
+//     console.log(search)
+//     const response = await api.get(`/recipes/${search}`);
+//     return response;
+//   },
