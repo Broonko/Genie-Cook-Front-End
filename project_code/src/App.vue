@@ -1,56 +1,90 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
+    <v-card color="grey-4" flat height="200px" tile>
+      <v-toolbar
+        color="light grey"
+        prominent
+        dense
+        class="grey lighten-3 blue--text"
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+        <router-link class="my-auto" to="/">
+          <v-icon color="blue lighten-1" large dark>
+            mdi-home
+          </v-icon>
+        </router-link>
+
+        <v-spacer></v-spacer>
+        
+
+        <v-tabs justify="center" >
+          <v-spacer></v-spacer>
+          <v-tab>Tips & Ideas</v-tab>
+
+          <v-spacer></v-spacer>
+        </v-tabs>
+        <v-spacer></v-spacer>
+
+        <div class="my-auto">
+          <!--<v-btn class="mt-12" color="primary" @click="overlay = !overlay">
+                Show Overlay
+              </v-btn>-->
+
+          <v-btn color="blue lighten-1" fab dark @click="overlay = !overlay" to="/Signup">
+            <v-icon>mdi-account-circle</v-icon>
+            <router-link class="my-auto" to="/Signup">
+            </router-link>
+          </v-btn>
+        <v-spacer></v-spacer>
+        </div>
+         
+          
+          <v-icon color="primary">
+            SignUp
+          </v-icon>
+        
+
+        <!--<v-btn>
+              <v-icon class="blue--text">mdi-magnify</v-icon>
+            </v-btn>
+
+            <v-btn icon>
+              <v-icon class="blue--text">mdi-dots-vertical</v-icon>
+            </v-btn>-->
+      </v-toolbar>
+      <v-overlay
+        :absolute="absolute"
+        :opacity="opacity"
+        :value="overlay"
+        :z-index="zIndex"
+      >
+        <v-btn color="blue lighten-2" @click="overlay = false">
+          Hide Overlay
+        </v-btn>
+      </v-overlay>
+    </v-card>
 
     <v-main>
-      <HelloWorld />
+      <router-view></router-view>
     </v-main>
+
+    <v-footer class="grey lighten-3" color="light grey">
+      <v-col class="text-center blue--text" cols="12">
+        {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
+      </v-col>
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
-
 export default {
   name: "App",
-
-  components: {
-    HelloWorld
+  data() {
+    return {
+      absolute: false,
+      opacity: 0.46,
+      overlay: false,
+      zIndex: 5,
+    };
   },
-
-  data: () => ({
-    //
-  })
 };
 </script>
