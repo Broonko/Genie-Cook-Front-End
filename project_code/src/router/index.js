@@ -2,7 +2,12 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Search from "../views/Search.vue";
 import Home from "../views/Home.vue";
+<<<<<<< HEAD
 import Signup from  "../views/Signup.vue";
+=======
+import Profile from "../views/Profile.vue";
+import Tips from "../views/Tips.vue";
+>>>>>>> 487a76aad608a1085f2657a740fb9608c97aa4de
 
 Vue.use(VueRouter);
 
@@ -19,6 +24,7 @@ const routes = [
     props: true,
   },
   {
+<<<<<<< HEAD
     path: "/signup",
     name: "Signup",
     component: Signup,
@@ -28,6 +34,19 @@ const routes = [
   //   name: "Home",
   //   component: Home,
   // },
+=======
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+    
+  },
+  {
+    path: "/tips",
+    name: "Tips",
+    component: Tips,
+    
+  },
+>>>>>>> 487a76aad608a1085f2657a740fb9608c97aa4de
   /*{
     path: "/about",
     name: "About",
