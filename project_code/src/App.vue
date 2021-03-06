@@ -29,12 +29,10 @@
               </v-btn>-->
 
           <v-btn color="blue lighten-1" fab dark @click="overlay = !overlay">
-            <v-icon>mdi-account-circle</v-icon></v-btn
-          ><Signup></Signup>
+            <v-icon>mdi-account-circle</v-icon>
+          </v-btn>
           <v-spacer></v-spacer>
         </div>
-
-       
       </v-toolbar>
       <v-overlay
         :absolute="absolute"
@@ -42,9 +40,31 @@
         :value="overlay"
         :z-index="zIndex"
       >
-        <v-btn color="blue lighten-2" @click="overlay = false">
+        <v-tabs
+          v-model="tab"
+          show-arrows
+          background-color="blue darken-4 "
+          icons-and-text
+          dark
+          grow
+        >
+          <v-tabs-slider color="grey darken-1"></v-tabs-slider>
+          <v-tab v-for="(i, idx) in tabs" :key="idx">
+            <v-icon large>{{ i.icon }}</v-icon>
+            <div class="caption py-1">{{ i.name }}</div>
+          </v-tab>
+
+          <v-btn icon color="blue lighten-2" @click="overlay = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+
+          <v-tab-item> <Login></Login> </v-tab-item>
+          <v-tab-item> <Signup></Signup> </v-tab-item>
+        </v-tabs>
+
+        <!-- <v-btn >
           Hide Overlay
-        </v-btn>
+        </v-btn> -->
       </v-overlay>
     </v-card>
 
@@ -60,24 +80,30 @@
   </v-app>
 </template>
 
-
 <script>
 
-import Signup from "@/components/Signup"; 
-
+import Login from "@/components/Login";
+import Signup from '@/components/Signup.vue';
 
 export default {
   name: "App",
-  components:{
+  components: {
+    Login,
     Signup
-    
   },
   data() {
     return {
       absolute: false,
       opacity: 0.46,
-      overlay: false,
+
       zIndex: 5,
+      overlay: false,
+      dialog: true,
+      tab: 0,
+      tabs: [
+        { name: "Login", icon: "mdi-account" },
+        { name: "Register", icon: "mdi-account-outline" },
+      ],
     };
   },
 };

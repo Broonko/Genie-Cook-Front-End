@@ -6,15 +6,11 @@ const api = axios.create({
 
 export default {
   async register(name, email, password) {
-    //let query = "chicken";
-    console.log(signup)
-    console.log('hola llegue a service')
-    console.log(this.name)
-    const response = await api.post('/auth/signup', {
+     const response = await api.post('/auth/userSignup', {
       name: name,
       email: email,
       password : password
     })
-    return response;
+    return response.data;
   },
 }
