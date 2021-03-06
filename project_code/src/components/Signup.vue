@@ -147,7 +147,7 @@ v-model="password"
     </v-dialog>
   </div>
 </template>
-</template>
+
 
 <script>
 import authService from "@/services/authService";
