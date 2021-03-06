@@ -29,21 +29,12 @@
               </v-btn>-->
 
           <v-btn color="blue lighten-1" fab dark @click="overlay = !overlay">
-          </v-btn>
+            <v-icon>mdi-account-circle</v-icon></v-btn
+          ><Signup></Signup>
           <v-spacer></v-spacer>
         </div>
 
-        <v-icon color="primary">
-          SignUp
-        </v-icon>
-
-        <!--<v-btn>
-              <v-icon class="blue--text">mdi-magnify</v-icon>
-            </v-btn>
-
-            <v-btn icon>
-              <v-icon class="blue--text">mdi-dots-vertical</v-icon>
-            </v-btn>-->
+       
       </v-toolbar>
       <v-overlay
         :absolute="absolute"
@@ -69,9 +60,18 @@
   </v-app>
 </template>
 
+
 <script>
+
+import Signup from "@/components/Signup"; 
+
+
 export default {
   name: "App",
+  components:{
+    Signup
+    
+  },
   data() {
     return {
       absolute: false,
