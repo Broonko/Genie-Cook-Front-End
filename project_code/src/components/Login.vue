@@ -1,11 +1,11 @@
 <template>
   <v-card class="px-4">
     <v-card-text>
-      <v-form ref="loginForm" v-model="valid" lazy-validation>
+      <v-form ref="form" v-model="valid" lazy-validation>
         <v-row>
           <v-col cols="12">
             <v-text-field
-              v-model="loginEmail"
+              v-model="email"
               :rules="loginEmailRules"
               label="E-mail"
               required
@@ -46,6 +46,8 @@
 </template>
 
 <script>
+import LoginService from "@/services/LoginService";
+
 export default {
   name: "Login",
   data() {
@@ -53,7 +55,7 @@ export default {
       valid: true,
       password: "",
       show1: false,
-      loginEmail: "",
+      email: "",
       loginEmailRules: [
         (v) => !!v || "Required",
         (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
@@ -66,13 +68,19 @@ export default {
   },
   methods: {
     validate: function() {
+      console.log('login')
       if (this.$refs.form.validate()) {
-        // authService
-        //   .register(this.name, this.email, this.password)
-        //   .then((response) => {
-        //     localStorage.setItem("token", response.token);
-        //     this.$route.push({ path: "/Profile" });
-        //   });
+        console.log('login here')
+        LoginService
+          .access(this.email, this.password)
+          .then((response) => {
+            console.log(response)
+            localStorage.setItem("token", response.token);
+            // this.$router.push({ path: "/Profile" });
+            this.$emit("overlay", false) 
+             
+           
+          });
       }
     },
   },

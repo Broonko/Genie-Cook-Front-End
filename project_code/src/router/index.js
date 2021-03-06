@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Search from "../views/Search.vue";
+import Recipes from "../views/Recipes.vue";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
+import Tips from "../views/Tips.vue";
 
 Vue.use(VueRouter);
 
@@ -13,15 +14,20 @@ const routes = [
     component: Home,
   },
   {
-    path: "/search/:search",
-    name: "Search",
-    component: Search,
+    path: "/recipes/:search",
+    name: "Recipes",
+    component: Recipes,
     props: true,
   },
   {
     path: "/profile",
     name: "Profile",
     component: Profile,
+  },
+  {
+    path: "/tips",
+    name: "Tips",
+    component: Tips,
   },
   /*{
     path: "/about",

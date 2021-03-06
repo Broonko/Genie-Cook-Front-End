@@ -108,10 +108,9 @@ export default {
         authService
           .register(this.name, this.email, this.password)
           .then((response) => {
-            console.log(response)
             localStorage.setItem("token", response.token);
-            // this.$router.push({ path: "/Home" });
-            this.$emit("overlay", false) 
+            this.$route.push({ path: "/Profile" });
+            //this.$emit("overlay", false) 
            
           });
       }

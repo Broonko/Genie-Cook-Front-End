@@ -7,17 +7,23 @@
         dense
         class="grey lighten-3 blue--text"
       >
-        <router-link class="my-auto" to="/">
+        <v-btn depressed flat class="my-auto" to="/">
           <v-icon color="blue lighten-1" large dark>
             mdi-home
           </v-icon>
-        </router-link>
+        </v-btn>
 
         <v-spacer></v-spacer>
 
         <v-tabs justify="center">
           <v-spacer></v-spacer>
+          <v-btn depressed flat class="my-auto" to="/Tips">
           <v-tab>Tips & Ideas</v-tab>
+          </v-btn>
+          <v-btn depressed flat  class="my-auto" to="/Profile">
+          <v-tab>Profile</v-tab>
+          </v-btn>
+          
 
           <v-spacer></v-spacer>
         </v-tabs>
@@ -81,15 +87,14 @@
 </template>
 
 <script>
-
 import Login from "@/components/Login";
-import Signup from '@/components/Signup.vue';
+import Signup from "@/components/Signup.vue";
 
 export default {
   name: "App",
   components: {
     Login,
-    Signup
+    Signup,
   },
   data() {
     return {
