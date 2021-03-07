@@ -20,7 +20,7 @@ export default {
 
   mounted() {
     recipesService
-      .getRecipes(this.$route.params.recipesid)
+      .getRecipesinformation(this.$route.params.recipesid)
       .then((response) => {
         this.recipeList = response.data;
       })
