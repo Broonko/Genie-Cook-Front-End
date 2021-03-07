@@ -12,7 +12,13 @@ export default {
   },
 
 
-  async getRecipes(recipesid) {
+  async getRecipesinformation(recipesid) {
+    console.log('Hola estoy en services y mi id es ' + recipesid)
+    const response = await api.get(`/recipes/${recipesid}`);
+    return response;
+  },
+
+  async getRecipesinstruccion(recipesid) {
     console.log('Hola estoy en services y mi id es ' + recipesid)
     const response = await api.get(`/recipes/${recipesid}`);
     return response;
@@ -20,7 +26,8 @@ export default {
 }  
 
 //   },
-// }
+// https://api.spoonacular.com/recipes/{id}/analyzedInstructions
+// } https://api.spoonacular.com/recipes/{id}/information
 // export default {
 //   async getAllRecipes(search) {
 //     //let query = "chicken";
