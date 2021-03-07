@@ -1,6 +1,6 @@
 <template>
   <div class="backgr">
-    <v-img src="../assets/genie.png"></v-img>
+    <v-img src="../assets/GenioTronco.gif" no-repeat ></v-img>
     <v-container class="imgBack">
       <v-row justify="center">
         <v-col cols="12" sm="6" md="4">
@@ -36,17 +36,19 @@ export default {
 
 <style lang="scss" scoped>
 .backgr {
+  
+  filter: brightness(90%);
   position: relative;
-  margin-bottom: 10%;
+  display: flex;
   height: 70%;
   width: 70%;
-  top: 30%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .imgBack {
   position: absolute;
-  top: 60%;
+  top: 101%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

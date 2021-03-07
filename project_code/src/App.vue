@@ -2,10 +2,11 @@
   <v-app>
     <v-card color="grey-4" flat height="200px" tile>
       <v-toolbar
+        c
         color="light grey"
         prominent
         dense
-        class="grey lighten-3 blue--text"
+        class="grey lighten-1"
       >
         <v-btn depressed flat class="my-auto" to="/">
           <v-icon color="blue lighten-1" large dark>
@@ -17,14 +18,12 @@
 
         <v-tabs justify="center">
           <v-spacer></v-spacer>
-          <v-btn depressed flat class="my-auto" to="/Tips">
-          <v-tab>Tips & Ideas</v-tab>
+          <v-btn  depressed flat class="tabs" to="/Tips">
+          Tips & Ideas
           </v-btn>
-          <v-btn depressed flat  class="my-auto" to="/Profile">
-          <v-tab>Profile</v-tab>
+          <v-btn depressed flat  class="tabs" to="/Profile">
+          Profile
           </v-btn>
-          
-
           <v-spacer></v-spacer>
         </v-tabs>
         <v-spacer></v-spacer>
@@ -113,3 +112,9 @@ export default {
   },
 };
 </script>
+<style >
+.tabs {
+  margin: auto;
+  border-radius: 20px;
+}
+</style>
