@@ -2,26 +2,26 @@
   <v-app>
     <v-card color="grey-4" flat height="200px" tile>
       <v-toolbar
-        c
-        color="light grey"
         prominent
         dense
-        class="grey lighten-1"
+        class="grey darken-2"
       >
-        <v-btn depressed flat class="my-auto" to="/">
-          <v-icon color="blue lighten-1" large dark>
+        <v-btn icon depressed flat class="my-auto" to="/">
+          <v-icon color="grey lighten-2" large>
             mdi-home
           </v-icon>
         </v-btn>
+        
 
         <v-spacer></v-spacer>
 
         <v-tabs justify="center">
           <v-spacer></v-spacer>
-          <v-btn  depressed flat class="tabs" to="/Tips">
+          <v-btn text dark depressed flat class="tabs" to="/Tips">
           Tips & Ideas
           </v-btn>
-          <v-btn depressed flat  class="tabs" to="/Profile">
+          
+          <v-btn text dark depressed flat  class="tabs" to="/Profile">
           Profile
           </v-btn>
           <v-spacer></v-spacer>
@@ -33,7 +33,7 @@
                 Show Overlay
               </v-btn>-->
 
-          <v-btn color="blue lighten-1" fab dark @click="overlay = !overlay">
+          <v-btn color="grey darken-1" fab dark @click="overlay = !overlay">
             <v-icon>mdi-account-circle</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
@@ -77,8 +77,8 @@
       <router-view></router-view>
     </v-main>
 
-    <v-footer class="grey lighten-3" color="light grey">
-      <v-col class="text-center blue--text" cols="12">
+    <v-footer class="grey darken-2" color="light grey">
+      <v-col class="text-center white--text" cols="12">
         {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
       </v-col>
     </v-footer>

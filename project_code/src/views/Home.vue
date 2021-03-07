@@ -1,9 +1,9 @@
 <template>
   <div class="backgr">
-    <v-img src="../assets/GenioTronco.gif" no-repeat ></v-img>
+    <v-img src="../assets/GenioGif.gif" no-repeat ></v-img>
     <v-container class="imgBack">
       <v-row justify="center">
-        <v-col cols="12" sm="6" md="4">
+        <v-col cols="12" sm="6" md="5">
           <v-text-field
             flat
             background-color="white"
@@ -36,19 +36,18 @@ export default {
 
 <style lang="scss" scoped>
 .backgr {
-  
-  filter: brightness(90%);
+  filter: hue-rotate(11deg);
   position: relative;
   display: flex;
-  height: 70%;
+  height: 98%;
   width: 70%;
-  top: 25%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 .imgBack {
   position: absolute;
-  top: 101%;
+  top: 102%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
