@@ -6,7 +6,6 @@ const api = axios.create({
 
 export default {
   async getAllRecipes(search) {
-    //let query = "chicken";
     console.log(search)
     const response = await api.get(`/recipes/${search}`);
     return response;

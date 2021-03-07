@@ -1,13 +1,25 @@
 <template>
-  <v-app>
-    <v-card color="grey-4" flat height="200px" tile>
-      <v-toolbar
-        prominent
-        dense
-        class="grey darken-2"
+  <v-app background-color="grey">
+    
+      <v-app-bar
+        absolute
+        dark
+        elevate-on-scroll
+        shrink-on-scroll
+        src="./assets/lamparaHeader.png"
+        fade-img-on-scroll
+        scroll-target="#scrolling-techniques-5"
+        scroll-threshold="500"
+        app
       >
-        <v-btn icon depressed flat class="my-auto" to="/">
-          <v-icon color="grey lighten-2" large>
+      <template v-slot:img="{ props }">
+          <v-img
+            v-bind="props"
+            gradient="to top right,rgba(46, 171, 224, 0.64), rgba(46, 171, 224, 0.64)"
+          ></v-img>
+        </template>
+        <v-btn icon depressed  class="my-auto ml-1" to="/">
+          <v-icon  large>
             mdi-home
           </v-icon>
         </v-btn>
@@ -29,16 +41,13 @@
         <v-spacer></v-spacer>
 
         <div class="my-auto">
-          <!--<v-btn class="mt-12" color="primary" @click="overlay = !overlay">
-                Show Overlay
-              </v-btn>-->
 
-          <v-btn color="grey darken-1" fab dark @click="overlay = !overlay">
+          <v-btn text large fab dark @click="overlay = !overlay">
             <v-icon>mdi-account-circle</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
         </div>
-      </v-toolbar>
+      </v-app-bar>
       <v-overlay
         :absolute="absolute"
         :opacity="opacity"
@@ -71,13 +80,13 @@
           Hide Overlay
         </v-btn> -->
       </v-overlay>
-    </v-card>
+   
 
     <v-main>
-      <router-view></router-view>
+      <router-view class="colorBack"></router-view>
     </v-main>
 
-    <v-footer class="grey darken-2" color="light grey">
+    <v-footer class="grey darken-1" color="light grey">
       <v-col class="text-center white--text" cols="12">
         {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
       </v-col>
@@ -117,4 +126,6 @@ export default {
   margin: auto;
   border-radius: 20px;
 }
+
+
 </style>

@@ -82,6 +82,9 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+
+      recipesService
+      .get
   },
 };
 </script>

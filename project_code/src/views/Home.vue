@@ -1,9 +1,10 @@
 <template>
   <div class="backgr">
-    <v-img src="../assets/GenioGif.gif" no-repeat ></v-img>
+    <v-img src="../assets/genieMove.gif" no-repeat ></v-img>
+    
     <v-container class="imgBack">
       <v-row justify="center">
-        <v-col cols="12" sm="6" md="5">
+        <v-col cols="12" sm="6" md="8">
           <v-text-field
             flat
             background-color="white"
@@ -16,7 +17,7 @@
             rounded
           ></v-text-field>
           <router-link :to="{ name: 'Recipes', params: { search: search } }">
-            <v-btn color="blue lighten-4" rounded block>search</v-btn>
+            <v-btn  color="teal lighten-3" rounded block>search</v-btn>
           </router-link>
         </v-col>
       </v-row>
@@ -36,18 +37,19 @@ export default {
 
 <style lang="scss" scoped>
 .backgr {
-  filter: hue-rotate(11deg);
+  filter: hue-rotate(10deg);
   position: relative;
   display: flex;
-  height: 98%;
-  width: 70%;
-  top: 35%;
+  height: 70%;
+  width: 50%;
+  top: 68%;
   left: 50%;
   transform: translate(-50%, -50%);
+  
 }
 .imgBack {
   position: absolute;
-  top: 102%;
+  top: -15%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

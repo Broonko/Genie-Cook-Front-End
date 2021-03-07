@@ -1,5 +1,5 @@
 <template>
-  <v-container  class="fluid">
+  <v-container  class="card">
     <v-row>
       <v-col class=" d-flex flex-wrap">
        <v-card
@@ -90,4 +90,11 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+  display: flex;
+  flex-flow: column;
+  
+  
+}
+</style>
