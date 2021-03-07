@@ -1,8 +1,8 @@
 <template>
   <v-container class="fluid">
-    <v-row>
+     <v-row>
       <v-col class=" d-flex flex-wrap">
-        <v-card
+       <v-card
           width="250"
           outlined
           class=" d-flex flex-wrap my-5 mx-5"
@@ -10,10 +10,11 @@
           v-for="(list, idx) in recipeList"
           :key="idx"
         >
+        <router-link :to="{name:'RecipesOne', params:{recipesid: list.id}}">
           <v-img height="250" width="250" :src="list.image"></v-img>
-
+          
           <v-card-title>{{ list.title }}</v-card-title>
-
+        </router-link>    
           <v-card-text>
             <v-row class="d-flex " align="center">
               <v-rating
@@ -25,7 +26,7 @@
                 readonly
                 size="14"
               ></v-rating>
-
+              
               <div class="grey--text ml-4">
                 4.5 (413)
               </div>
@@ -39,13 +40,16 @@
             </div>
           </v-card-text>
         </v-card>
+        
       </v-col>
+      
     </v-row>
   </v-container>
 </template>
 
 <script>
 import recipesService from "@/services/recipesService";
+
 export default {
   name: "Recipes",
   data() {
@@ -77,7 +81,6 @@ export default {
       .getAllRecipes(this.search)
       .then((response) => {
         this.recipeList = response.data;
-        console.log(response.data);
       })
       .catch((err) => {
         console.log(err);
