@@ -1,10 +1,11 @@
 <template>
-  <v-container  class="card">
+  <v-container  >
     <v-row>
-      <v-col class=" d-flex flex-wrap">
+      <v-col class="card">
        <v-card
+          color="grey lighten-1"
           elevation ="15"
-          width="300"
+          width="400"
           outlined
           class=" d-flex flex-wrap my-5 mx-5"
           cols="4"
@@ -22,15 +23,12 @@
             <br />
             <br />
 
-            <div>
-              Small plates, salads & sandwiches - an intimate setting with 12
-              indoor seats plus patio seating.
-            </div>
+            
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="card">
        <v-col
           cols="12"
           sm="6"
@@ -45,7 +43,7 @@
           ></v-select>
         </v-col>
     </v-row>
-    <v-row>
+    <v-row class="card">
        <v-col
           cols="12"
           sm="6"
@@ -93,7 +91,10 @@ export default {
 <style lang="scss" scoped>
 .card {
   display: flex;
-  flex-flow: column;
+ flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   
   
 }
