@@ -42,7 +42,7 @@
 
         <div class="my-auto">
 
-          <v-btn text large fab dark @click="overlay = !overlay">
+          <v-btn text x-large fab dark @click="overlay = !overlay">
             <v-icon>mdi-account-circle</v-icon>
           </v-btn>
           <v-spacer></v-spacer>
