@@ -1,8 +1,8 @@
 <template>
   <v-container class="fluid">
-     <v-row>
+    <v-row>
       <v-col class=" d-flex flex-wrap">
-       <v-card
+        <v-card
           width="250"
           outlined
           class=" d-flex flex-wrap my-5 mx-5"
@@ -10,14 +10,20 @@
           v-for="(list, idx) in recipeList"
           :key="idx"
         >
-        <router-link :to="{name:'RecipesOne', params:{recipesid: list.id}}">
-          <v-img height="250" width="250" :src="list.image"></v-img>
-          
-          <v-card-title>{{ list.title }}</v-card-title>
-        </router-link>    
+          <router-link
+            :to="{ name: 'RecipesOne', params: { recipesid: list.id } }"
+          >
+            <v-img height="250" width="250" :src="list.image"></v-img>
+
+            <v-card-title>
+              {{ getNutrition(list.id) }}
+              {{ list.title }}
+              {{ list.id }}
+            </v-card-title>
+          </router-link>
           <v-card-text>
             <v-row class="d-flex " align="center">
-              <v-rating
+              <!-- <v-rating
                 class="mx-4"
                 :value="4.5"
                 color="amber"
@@ -25,24 +31,25 @@
                 half-increments
                 readonly
                 size="14"
-              ></v-rating>
-              
-              <div class="grey--text ml-4">
-                4.5 (413)
+              ></v-rating> -->
+
+              <div
+                class="grey--text ml-4"
+                v-for="(item, i) in list.missedIngredients"
+                :key="i"
+              >
+                {{ item.name }}
               </div>
             </v-row>
             <br />
             <br />
 
-            <div>
-              Small plates, salads & sandwiches - an intimate setting with 12
-              indoor seats plus patio seating.
+            <div v-for="(item, i) in list.usedIngredients" :key="i">
+              {{ item.name }}
             </div>
           </v-card-text>
         </v-card>
-        
       </v-col>
-      
     </v-row>
   </v-container>
 </template>
@@ -56,6 +63,7 @@ export default {
     return {
       recipeList: [],
       overlay: false,
+      id: '',
     };
   },
   props: ["search"],
@@ -81,13 +89,28 @@ export default {
       .getAllRecipes(this.search)
       .then((response) => {
         this.recipeList = response.data;
+        console.log(response.data)
+        this.id = response.data[0].id
       })
       .catch((err) => {
         console.log(err);
       });
-
+  },
+  methods: {
+    getNutrition: function() {
+      console.log('estoy dentro del metodo')
+      console.log(this.id)
+      
       recipesService
-      .get
+        .getAllNutrition(this.id)
+        .then((response) => {
+          console.log(response.data);
+          //this.id = response.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

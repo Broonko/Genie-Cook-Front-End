@@ -6,10 +6,18 @@ const api = axios.create({
 
 export default {
   async getAllRecipes(search) {
-    console.log(search)
     const response = await api.get(`/recipes/${search}`);
     return response;
   },
+
+  async getAllNutrition(id) {
+    console.log(id)
+    console.log('estoy dentro del servicio')
+    const response = await api.get(`/recipes/${id}`);
+    return response;
+  },
+
+
 
 
   async getRecipesinformation(recipesid) {
