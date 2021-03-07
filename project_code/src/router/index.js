@@ -4,6 +4,7 @@ import Recipes from "../views/Recipes.vue";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import Tips from "../views/Tips.vue";
+import RecipesOne from "../views/RecipesOne.vue";
 
 Vue.use(VueRouter);
 
@@ -28,6 +29,11 @@ const routes = [
     path: "/tips",
     name: "Tips",
     component: Tips,
+  },
+  {
+    path: "/recipesone",
+    name: "RecipesOne",
+    component: RecipesOne,
   },
   /*{
     path: "/about",

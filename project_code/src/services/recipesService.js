@@ -10,12 +10,15 @@ export default {
     const response = await api.get(`/recipes/${search}`);
     return response;
   },
-}
-// export default {
-//   async getAllRecipes(signup) {
-//     //let query = "chicken";
-//     console.log(signup)
-  
+
+
+  async getRecipes(recipesid) {
+    console.log('Hola estoy en services y mi id es ' + recipesid)
+    const response = await api.get(`/recipes/${recipesid}`);
+    return response;
+  },
+}  
+
 //   },
 // }
 // export default {
