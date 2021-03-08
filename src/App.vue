@@ -1,86 +1,82 @@
 <template>
   <v-app background-color="grey">
-    
-      <v-app-bar
-        absolute
-        dark
-        elevate-on-scroll
-        shrink-on-scroll
-        src="./assets/lamparaHeader.png"
-        fade-img-on-scroll
-        scroll-target="#scrolling-techniques-5"
-        scroll-threshold="500"
-        app
-      >
+    <v-app-bar
+      absolute
+      dark
+      elevate-on-scroll
+      shrink-on-scroll
+      src="./assets/lamparaHeader.png"
+      fade-img-on-scroll
+      scroll-target="#scrolling-techniques-5"
+      scroll-threshold="500"
+      app
+    >
       <template v-slot:img="{ props }">
-          <v-img
-            v-bind="props"
-            gradient="to top right,rgba(46, 171, 224, 0.64), rgba(46, 171, 224, 0.64)"
-          ></v-img>
-        </template>
-        <v-btn icon depressed  class="my-auto ml-1" to="/">
-          <v-icon  large>
-            mdi-home
-          </v-icon>
-        </v-btn>
-        
+        <v-img
+          v-bind="props"
+          gradient="to top right,rgba(46, 171, 224, 0.64), rgba(46, 171, 224, 0.64)"
+        ></v-img>
+      </template>
+      <v-btn icon depressed class="my-auto ml-1" to="/">
+        <v-icon large>
+          mdi-home
+        </v-icon>
+      </v-btn>
 
+      <v-spacer></v-spacer>
+
+      <v-tabs justify="center">
         <v-spacer></v-spacer>
-
-        <v-tabs justify="center">
-          <v-spacer></v-spacer>
-          <v-btn text dark depressed flat class="tabs" to="/Tips">
+        <v-btn text dark depressed class="tabs" to="/Tips">
           Tips & Ideas
-          </v-btn>
-          
-          <v-btn text dark depressed flat  class="tabs" to="/Profile">
+        </v-btn>
+
+        <v-btn text dark depressed class="tabs" to="/Profile">
           Profile
-          </v-btn>
-          <v-spacer></v-spacer>
-        </v-tabs>
+        </v-btn>
         <v-spacer></v-spacer>
+      </v-tabs>
+      <v-spacer></v-spacer>
 
-        <div class="my-auto">
-
-          <v-btn text x-large fab dark @click="overlay = !overlay">
-            <v-icon>mdi-account-circle</v-icon>
-          </v-btn>
-          <v-spacer></v-spacer>
-        </div>
-      </v-app-bar>
-      <v-overlay
-        :absolute="absolute"
-        :opacity="opacity"
-        :value="overlay"
-        :z-index="zIndex"
+      <div class="my-auto">
+        <v-btn text x-large fab dark @click="overlay = !overlay">
+          <v-icon>mdi-account-circle</v-icon>
+        </v-btn>
+        <v-spacer></v-spacer>
+      </div>
+    </v-app-bar>
+    <v-overlay
+      :absolute="absolute"
+      :opacity="opacity"
+      :value="overlay"
+      :z-index="zIndex"
+    >
+      <v-tabs
+        v-model="tab"
+        show-arrows
+        background-color="blue darken-4 "
+        icons-and-text
+        dark
+        grow
       >
-        <v-tabs
-          v-model="tab"
-          show-arrows
-          background-color="blue darken-4 "
-          icons-and-text
-          dark
-          grow
-        >
-          <v-tabs-slider color="grey darken-1"></v-tabs-slider>
-          <v-tab v-for="(i, idx) in tabs" :key="idx">
-            <v-icon large>{{ i.icon }}</v-icon>
-            <div class="caption py-1">{{ i.name }}</div>
-          </v-tab>
+        <v-tabs-slider color="grey darken-1"></v-tabs-slider>
+        <v-tab v-for="(i, idx) in tabs" :key="idx">
+          <v-icon large>{{ i.icon }}</v-icon>
+          <div class="caption py-1">{{ i.name }}</div>
+        </v-tab>
 
-          <v-btn icon color="blue lighten-2" @click="overlay = false">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
+        <v-btn icon color="blue lighten-2" @click="overlay = false">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
 
-          <v-tab-item> <Login></Login> </v-tab-item>
-          <v-tab-item> <Signup></Signup> </v-tab-item>
-        </v-tabs>
+        <v-tab-item> <Login></Login> </v-tab-item>
+        <v-tab-item> <Signup></Signup> </v-tab-item>
+      </v-tabs>
 
-        <!-- <v-btn >
+      <!-- <v-btn >
           Hide Overlay
         </v-btn> -->
-      </v-overlay>
-   
+    </v-overlay>
 
     <v-main>
       <router-view class="colorBack"></router-view>
@@ -102,7 +98,7 @@ export default {
   name: "App",
   components: {
     Login,
-    Signup,
+    Signup
   },
   data() {
     return {
@@ -115,17 +111,15 @@ export default {
       tab: 0,
       tabs: [
         { name: "Login", icon: "mdi-account" },
-        { name: "Register", icon: "mdi-account-outline" },
-      ],
+        { name: "Register", icon: "mdi-account-outline" }
+      ]
     };
-  },
+  }
 };
 </script>
-<style >
+<style>
 .tabs {
   margin: auto;
   border-radius: 20px;
 }
-
-
 </style>

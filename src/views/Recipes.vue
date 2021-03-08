@@ -63,55 +63,33 @@ export default {
     return {
       recipeList: [],
       overlay: false,
-      id: '',
+      id: ""
     };
   },
   props: ["search"],
-
-  /*methods: {
-    getRecipes: function() {
-      recipesService
-        .getAllRecipes(this.search)
-        .then((response) => {
-          this.recipeList = response.data;
-          console.log(response.data[0]);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      //console.log(this.recipesService);
-    },
-  },*/
-
-  mounted() {
-    console.log(this.search);
-    recipesService
-      .getAllRecipes(this.search)
-      .then((response) => {
-        this.recipeList = response.data;
-        console.log(response.data)
-        this.id = response.data[0].id
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async mounted() {
+    try {
+      this.recipeList = await recipesService.getAllRecipes(this.search);
+    } catch (err) {
+      console.log(err);
+    }
   },
   methods: {
     getNutrition: function() {
-      console.log('estoy dentro del metodo')
-      console.log(this.id)
-      
+      console.log("estoy dentro del metodo");
+      console.log(this.id);
+
       recipesService
         .getAllNutrition(this.id)
-        .then((response) => {
+        .then(response => {
           console.log(response.data);
           //this.id = response.data;
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

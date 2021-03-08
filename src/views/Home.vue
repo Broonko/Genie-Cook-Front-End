@@ -1,7 +1,7 @@
 <template>
   <div class="backgr">
-    <v-img src="../assets/genieMove.gif" no-repeat ></v-img>
-    
+    <v-img src="../assets/genieMove.gif" no-repeat></v-img>
+
     <v-container class="imgBack">
       <v-row justify="center">
         <v-col cols="12" sm="6" md="8">
@@ -16,9 +16,13 @@
             outlined
             rounded
           ></v-text-field>
-          <router-link :to="{ name: 'Recipes', params: { search: search } }">
-            <v-btn  color="teal lighten-3" rounded block>search</v-btn>
-          </router-link>
+          <v-btn
+            color="teal lighten-3"
+            rounded
+            block
+            :to="{ name: 'Recipes', params: { search: search } }"
+            >search</v-btn
+          >
         </v-col>
       </v-row>
     </v-container>
@@ -29,9 +33,9 @@
 export default {
   data() {
     return {
-      search: "",
+      search: ""
     };
-  },
+  }
 };
 </script>
 
@@ -45,7 +49,6 @@ export default {
   top: 68%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
 }
 .imgBack {
   position: absolute;
