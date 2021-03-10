@@ -11,14 +11,13 @@
           :key="idx"
         >
           <router-link
-            :to="{ name: 'RecipesOne', params: { recipesid: list.id } }"
+            :to="{ name: 'Recipe', params: { recipeid: list.recipeId } }"
           >
             <v-img height="250" width="250" :src="list.image"></v-img>
 
             <v-card-title>
-              {{ getNutrition(list.id) }}
               {{ list.title }}
-              {{ list.id }}
+              {{ list.calories }}
             </v-card-title>
           </router-link>
           <v-card-text>

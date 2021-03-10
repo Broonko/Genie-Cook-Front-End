@@ -9,26 +9,16 @@ export default {
     const response = await api.get("/recipes/search/", {
       params: { ingredients: query }
     });
+
+    await response.data.forEach(element => {
+      console.log(JSON.stringify(element) + "estamos aqui");
+    });
     return response.data;
   },
-
-  async getAllNutrition(id) {
-    console.log(id);
-    console.log("estoy dentro del servicio");
-    const response = await api.get(`/recipes/${id}`);
-    return response;
-  },
-
-  async getRecipesinformation(recipesid) {
-    console.log("Hola estoy en services y mi id es " + recipesid);
-    const response = await api.get(`/recipes/${recipesid}`);
-    return response;
-  },
-
-  async getRecipesinstruccion(recipesid) {
-    console.log("Hola estoy en services y mi id es " + recipesid);
-    const response = await api.get(`/recipes/${recipesid}`);
-    return response;
+  async getRecipesinformation(recipeid) {
+    console.log("Hola estoy en services y mi id es " + recipeid);
+    const response = await api.get(`/recipes/${recipeid}`);
+    return response.data;
   }
 };
 

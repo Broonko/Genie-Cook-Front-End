@@ -7,7 +7,6 @@
       shrink-on-scroll
       src="./assets/lamparaHeader.png"
       fade-img-on-scroll
-      scroll-target="#scrolling-techniques-5"
       scroll-threshold="500"
       app
     >

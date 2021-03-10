@@ -4,7 +4,7 @@ import Recipes from "../views/Recipes.vue";
 import Home from "../views/Home.vue";
 import Profile from "../views/Profile.vue";
 import Tips from "../views/Tips.vue";
-import RecipesOne from "../views/RecipesOne.vue";
+import Recipe from "../views/Recipe.vue";
 
 Vue.use(VueRouter);
 
@@ -12,29 +12,29 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
   },
   {
-    path: "/recipes/:id",
+    path: "/recipes/:search",
     name: "Recipes",
     component: Recipes,
-    props: true,
+    props: true
   },
   {
     path: "/profile",
     name: "Profile",
-    component: Profile,
+    component: Profile
   },
   {
     path: "/tips",
     name: "Tips",
-    component: Tips,
+    component: Tips
   },
   {
-    path: "/recipesone",
-    name: "RecipesOne",
-    component: RecipesOne,
-  },
+    path: "/recipe/:id",
+    name: "Recipe",
+    component: Recipe
+  }
   /*{
     path: "/about",
     name: "About",
@@ -49,7 +49,7 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;
