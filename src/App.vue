@@ -1,44 +1,33 @@
 <template>
-  <v-app background-color="grey">
+  <v-app background-color="white">
     <v-app-bar
-      absolute
-      dark
-      elevate-on-scroll
-      shrink-on-scroll
-      src="./assets/lamparaHeader.png"
-      fade-img-on-scroll
-      scroll-threshold="500"
-      app
-    >
-      <template v-slot:img="{ props }">
-        <v-img
-          v-bind="props"
-          gradient="to top right,rgba(46, 171, 224, 0.64), rgba(46, 171, 224, 0.64)"
-        ></v-img>
-      </template>
+    src=./assets/Genio.Logo.png
+    absolute elevate-on-scroll shrink-on-scroll app>
       <v-btn icon depressed class="my-auto ml-1" to="/">
         <v-icon large>
           mdi-home
         </v-icon>
       </v-btn>
-
       <v-spacer></v-spacer>
 
       <v-tabs justify="center">
         <v-spacer></v-spacer>
-        <v-btn text dark depressed class="tabs" to="/Tips">
+        <v-btn text depressed class="tabs" to="/Tips">
           Tips & Ideas
         </v-btn>
+        <v-spacer></v-spacer>
 
-        <v-btn text dark depressed class="tabs" to="/Profile">
+        <v-btn text depressed class="tabs" to="/Profile">
           Profile
         </v-btn>
+
         <v-spacer></v-spacer>
       </v-tabs>
+
       <v-spacer></v-spacer>
 
       <div class="my-auto">
-        <v-btn text x-large fab dark @click="overlay = !overlay">
+        <v-btn text x-large fab @click="overlay = !overlay">
           <v-icon>mdi-account-circle</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
@@ -120,5 +109,9 @@ export default {
 .tabs {
   margin: auto;
   border-radius: 20px;
+}
+.logo {
+  display: flex;
+  margin-top: 10px;
 }
 </style>

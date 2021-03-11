@@ -1,6 +1,6 @@
 <template>
   <div class="backgr">
-    <v-img src="../assets/genieMove.gif" no-repeat></v-img>
+    <v-img src="../assets/genioFondo.png" no-repeat></v-img>
 
     <v-container class="imgBack">
       <v-row justify="center">
@@ -17,7 +17,7 @@
             rounded
           ></v-text-field>
           <v-btn
-            color="teal lighten-3"
+            color="teal lighten-1"
             rounded
             block
             :to="{ name: 'Recipes', params: { search: search } }"
@@ -44,15 +44,16 @@ export default {
   filter: hue-rotate(10deg);
   position: relative;
   display: flex;
-  height: 70%;
-  width: 50%;
-  top: 68%;
+  height: 90%;
+  width: 90%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  filter: brightness(95%);
 }
 .imgBack {
   position: absolute;
-  top: -15%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
