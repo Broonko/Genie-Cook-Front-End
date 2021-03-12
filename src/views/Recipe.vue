@@ -44,18 +44,25 @@ export default {
     console.log(this.$route.params.recipeid);
     profileService.getUser().then(response => {
       console.log(response.favourites);
-      this.active = response.favourites.find(elem => {
-        console.log(typeof elem, typeof this.$route.params.recipeid);
-        return elem === this.$route.params.recipeid;
-      });
+      if (
+        response.favourites.find(elem => elem === this.$route.params.recipeid)
+      ) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
     });
   },
   methods: {
     updateFavourites: function(id) {
       recipesService.updateFavourites(id).then(response => {
-        this.active = response.find(elem => elem === id);
-        console.log(response.find(elem => elem === id));
+        if (response.find(elem => elem === id)) {
+          this.active = true;
+        } else {
+          this.active = false;
+        }
       });
+      console.log(this.active);
     }
   }
 };
