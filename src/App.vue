@@ -1,5 +1,5 @@
 <template>
-  <v-app background-color="white">
+  <v-app>
     <v-app-bar
     src=./assets/Genio.Logo.png
     absolute elevate-on-scroll shrink-on-scroll app>
@@ -42,7 +42,7 @@
       <v-tabs
         v-model="tab"
         show-arrows
-        background-color="blue darken-4 "
+        background-color="blue darken-2 "
         icons-and-text
         dark
         grow
@@ -53,7 +53,7 @@
           <div class="caption py-1">{{ i.name }}</div>
         </v-tab>
 
-        <v-btn icon color="blue lighten-2" @click="overlay = false">
+        <v-btn icon color="white" @click="overlay = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
 
@@ -70,8 +70,8 @@
       <router-view class="colorBack"></router-view>
     </v-main>
 
-    <v-footer class="grey darken-1" color="light grey">
-      <v-col class="text-center white--text" cols="12">
+    <v-footer class="grey lighten-3" color="light grey">
+      <v-col class="text-center grey--text" cols="12">
         {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
       </v-col>
     </v-footer>

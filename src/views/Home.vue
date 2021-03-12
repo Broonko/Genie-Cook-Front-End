@@ -4,7 +4,7 @@
 
     <v-container class="imgBack">
       <v-row justify="center">
-        <v-col cols="12" sm="6" md="8">
+        <v-col cols="12" sm="4" md="5">
           <v-text-field
             flat
             background-color="white"
@@ -18,11 +18,23 @@
           ></v-text-field>
           <v-btn
             color="teal lighten-1"
+            dark
             rounded
             block
             :to="{ name: 'Recipes', params: { search: search } }"
             >search</v-btn
           >
+          <div>
+            <v-carousel>
+              <v-carousel-item
+                v-for="(item, i) in items"
+                :key="i"
+                :src="item.src"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+              ></v-carousel-item>
+            </v-carousel>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -33,7 +45,18 @@
 export default {
   data() {
     return {
-      search: ""
+      search: "",
+      items: [
+        {
+          src: "../assets/lampara.png"
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+        },
+        {
+          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
+        }
+      ]
     };
   }
 };
@@ -41,19 +64,20 @@ export default {
 
 <style lang="scss" scoped>
 .backgr {
-  filter: hue-rotate(10deg);
+  filter: hue-rotate(20deg);
   position: relative;
   display: flex;
-  height: 90%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: brightness(95%);
+  filter: brightness(90%);
 }
 .imgBack {
+  display: flex;
   position: absolute;
-  top: 80%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
