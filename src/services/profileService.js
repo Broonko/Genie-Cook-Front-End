@@ -6,11 +6,9 @@ const api = axios.create({
 
 export default {
   async getUser() {
-    console.log("servicio");
-    const response = await api.get(`/users/me`, {
+    const response = await api.get("/users/me", {
       headers: { token: localStorage.getItem("token") }
     });
-    console.log(response);
-    return response;
+    return response.data;
   }
 };

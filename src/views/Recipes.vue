@@ -1,51 +1,38 @@
 <template>
   <v-container class="fluid">
     <v-row>
-      <v-col class=" d-flex flex-wrap">
+      <v-col class="d-flex flex-wrap">
         <v-card
           width="250"
           outlined
-          class=" d-flex flex-wrap my-5 mx-5"
+          class="d-flex flex-wrap my-5 mx-5"
           cols="4"
-          v-for="(list, idx) in recipeList"
+          v-for="(recipe, idx) in recipeList"
           :key="idx"
         >
           <router-link
-            :to="{ name: 'Recipe', params: { recipeid: list.recipeId } }"
+            :to="{ name: 'Recipe', params: { recipeid: recipe._id } }"
           >
-            <v-img height="250" width="250" :src="list.image"></v-img>
+            <v-img height="250" width="250" :src="recipe.image"></v-img>
 
             <v-card-title>
-              {{ list.title }}
-              {{ list.calories }}
+              {{ recipe._id }}
+              {{ recipe.title }}
             </v-card-title>
           </router-link>
           <v-card-text>
-            <v-row class="d-flex " align="center">
-              <!-- <v-rating
-                class="mx-4"
-                :value="4.5"
-                color="amber"
-                dense
-                half-increments
-                readonly
-                size="14"
-              ></v-rating> -->
-
-              <div
-                class="grey--text ml-4"
-                v-for="(item, i) in list.missedIngredients"
-                :key="i"
-              >
-                {{ item.name }}
-              </div>
+            <v-row class="d-flex" align="center">
+              {{ recipe.calories }}
             </v-row>
             <br />
             <br />
-
-            <div v-for="(item, i) in list.usedIngredients" :key="i">
-              {{ item.name }}
-            </div>
+            <v-btn
+              icon
+              @click="toggleFavourites(idx)"
+              :color="isFavourite(idx) ? 'red' : 'grey'"
+            >
+              <v-icon>mdi-heart</v-icon>
+            </v-btn>
           </v-card-text>
         </v-card>
       </v-col>
@@ -62,7 +49,8 @@ export default {
     return {
       recipeList: [],
       overlay: false,
-      id: ""
+      id: "",
+      active: [false, false, false]
     };
   },
   props: ["search"],
@@ -73,20 +61,15 @@ export default {
       console.log(err);
     }
   },
+  computed: {},
   methods: {
-    getNutrition: function() {
-      console.log("estoy dentro del metodo");
-      console.log(this.id);
-
-      recipesService
-        .getAllNutrition(this.id)
-        .then(response => {
-          console.log(response.data);
-          //this.id = response.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    toggleFavourites: function(idx) {
+      this.active[idx] === false
+        ? this.$set(this.active, idx, true)
+        : this.$set(this.active, idx, false);
+    },
+    isFavourite: function(idx) {
+      return this.active[idx];
     }
   }
 };

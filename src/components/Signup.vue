@@ -85,13 +85,13 @@ export default {
       verify: "",
 
       emailRules: [
-        (v) => !!v || "Required",
-        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+        v => !!v || "Required",
+        v => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
       rules: {
-        required: (value) => !!value || "Required.",
-        min: (v) => (v && v.length >= 8) || "Min 8 characters",
-      },
+        required: value => !!value || "Required.",
+        min: v => (v && v.length >= 8) || "Min 8 characters"
+      }
     };
   },
 
@@ -103,25 +103,23 @@ export default {
       this.$refs.form.resetValidation();
     },
     validate: function() {
-    
       if (this.$refs.form.validate()) {
         authService
           .register(this.name, this.email, this.password)
-          .then((response) => {
+          .then(response => {
             localStorage.setItem("token", response.token);
-            this.$route.push({ path: "/Profile" });
-            //this.$emit("overlay", false) 
-           
+            // this.$route.push({ path: "/Profile" });
+            this.$emit("overlay", false);
           });
       }
-    },
+    }
   },
 
   computed: {
     passwordMatch() {
       return () => this.password === this.verify || "Password must match";
-    },
-  },
+    }
+  }
 };
 </script>
 
