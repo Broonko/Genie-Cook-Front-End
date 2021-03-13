@@ -4,7 +4,6 @@
       <v-btn icon depressed class="my-auto ml-1" to="/">
         <v-icon large> mdi-home </v-icon>
       </v-btn>
-
       <v-spacer></v-spacer>
 
       <v-tabs justify="center">
@@ -12,9 +11,11 @@
         <v-btn text depressed class="tabs" to="/Tips">
           Tips & Ideas
         </v-btn>
+        <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
       </v-tabs>
+
       <v-spacer></v-spacer>
 
       <div v-if="!token" class="my-auto">
@@ -36,7 +37,7 @@
       <v-tabs
         v-model="tab"
         show-arrows
-        background-color="blue darken-4 "
+        background-color="blue darken-2 "
         icons-and-text
         dark
         grow
@@ -47,7 +48,7 @@
           <div class="caption py-1">{{ i.name }}</div>
         </v-tab>
 
-        <v-btn icon color="blue lighten-2" @click="overlay = false">
+        <v-btn icon color="white" @click="overlay = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
 
@@ -105,5 +106,9 @@ export default {
 .tabs {
   margin: auto;
   border-radius: 20px;
+}
+.logo {
+  display: flex;
+  margin-top: 10px;
 }
 </style>
