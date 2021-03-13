@@ -1,48 +1,31 @@
 <template>
-  <v-app background-color="grey">
-    <v-app-bar
-      absolute
-      dark
-      elevate-on-scroll
-      shrink-on-scroll
-      src="./assets/lamparaHeader.png"
-      fade-img-on-scroll
-      scroll-threshold="500"
-      app
-    >
-      <template v-slot:img="{ props }">
-        <v-img
-          v-bind="props"
-          gradient="to top right,rgba(46, 171, 224, 0.64), rgba(46, 171, 224, 0.64)"
-        ></v-img>
-      </template>
+  <v-app>
+    <v-app-bar color="white" absolute elevate-on-scroll shrink-on-scroll app>
       <v-btn icon depressed class="my-auto ml-1" to="/">
-        <v-icon large>
-          mdi-home
-        </v-icon>
+        <v-icon large> mdi-home </v-icon>
       </v-btn>
 
       <v-spacer></v-spacer>
 
       <v-tabs justify="center">
         <v-spacer></v-spacer>
-        <v-btn text dark depressed class="tabs" to="/Tips">
+        <v-btn text depressed class="tabs" to="/Tips">
           Tips & Ideas
         </v-btn>
 
-        <v-btn text dark depressed class="tabs" to="/Profile">
-          Profile
-        </v-btn>
         <v-spacer></v-spacer>
       </v-tabs>
       <v-spacer></v-spacer>
 
-      <div class="my-auto">
-        <v-btn text x-large fab dark @click="overlay = !overlay">
+      <div v-if="!token" class="my-auto">
+        <v-btn text @click="overlay = !overlay">Login</v-btn>
+      </div>
+      <div v-else class="my-auto">
+        <v-btn text x-large fab to="/Profile">
           <v-icon>mdi-account-circle</v-icon>
         </v-btn>
-        <v-spacer></v-spacer>
       </div>
+      <v-spacer></v-spacer>
     </v-app-bar>
     <v-overlay
       :absolute="absolute"
@@ -81,8 +64,8 @@
       <router-view class="colorBack"></router-view>
     </v-main>
 
-    <v-footer class="grey darken-1" color="light grey">
-      <v-col class="text-center white--text" cols="12">
+    <v-footer class="grey lighten-3" color="black">
+      <v-col class="text-center white-text" cols="12">
         {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
       </v-col>
     </v-footer>
@@ -101,6 +84,8 @@ export default {
   },
   data() {
     return {
+      token: localStorage.token,
+      foo: "0",
       absolute: false,
       opacity: 0.46,
 

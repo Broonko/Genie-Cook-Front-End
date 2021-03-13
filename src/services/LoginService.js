@@ -11,7 +11,7 @@ export default {
       email: email,
       password: password
     });
-    console.log("aqui");
+    console.log(response.data);
     return response.data;
   }
 };

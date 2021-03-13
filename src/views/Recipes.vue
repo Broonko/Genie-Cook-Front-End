@@ -3,9 +3,10 @@
     <v-row>
       <v-col class="d-flex flex-wrap">
         <v-card
-          width="250"
+          elevation="5"
+          width="300"
           outlined
-          class="d-flex flex-wrap my-5 mx-5"
+          class="d-flex flex-wrap my-5 mx-auto"
           cols="4"
           v-for="(recipe, idx) in recipeList"
           :key="idx"
@@ -13,18 +14,19 @@
           <router-link
             :to="{ name: 'Recipe', params: { recipeid: recipe._id } }"
           >
-            <v-img height="250" width="250" :src="recipe.image"></v-img>
+            <v-img height="300" width="300" :src="recipe.image"></v-img>
 
             <v-card-title>
-              {{ recipe._id }}
               {{ recipe.title }}
             </v-card-title>
           </router-link>
           <v-card-text>
-            <v-row class="d-flex" align="center">
-              {{ recipe.calories }}
+            <v-row class="d-flex mx-2" align="center">
+              Calories: {{ recipe.calories }} <br />
+              Carbs: {{ recipe.carbs }} <br />
+              Protein: {{ recipe.protein }} <br />
+              Fat: {{ recipe.fat }}
             </v-row>
-            <br />
             <br />
             <v-btn
               icon

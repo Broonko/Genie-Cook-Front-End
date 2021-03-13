@@ -57,33 +57,28 @@ export default {
       show1: false,
       email: "",
       loginEmailRules: [
-        (v) => !!v || "Required",
-        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+        v => !!v || "Required",
+        v => /.+@.+\..+/.test(v) || "E-mail must be valid"
       ],
       rules: {
-        required: (value) => !!value || "Required.",
-        min: (v) => (v && v.length >= 8) || "Min 8 characters",
-      },
+        required: value => !!value || "Required.",
+        min: v => (v && v.length >= 8) || "Min 8 characters"
+      }
     };
   },
   methods: {
     validate: function() {
-      console.log('login')
+      console.log("login");
       if (this.$refs.form.validate()) {
-        console.log('login here')
-        LoginService
-          .access(this.email, this.password)
-          .then((response) => {
-            console.log(response)
-            localStorage.setItem("token", response.token);
-            // this.$router.push({ path: "/Profile" });
-            this.$emit("overlay", false) 
-             
-           
-          });
+        console.log("login here");
+        LoginService.access(this.email, this.password).then(response => {
+          console.log(response);
+          localStorage.setItem("token", response.token);
+          this.$router.go();
+        });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

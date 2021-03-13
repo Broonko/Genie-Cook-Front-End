@@ -108,8 +108,7 @@ export default {
           .register(this.name, this.email, this.password)
           .then(response => {
             localStorage.setItem("token", response.token);
-            // this.$route.push({ path: "/Profile" });
-            this.$emit("overlay", false);
+            this.$router.go();
           });
       }
     }
