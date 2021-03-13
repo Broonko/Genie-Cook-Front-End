@@ -1,7 +1,7 @@
 const axios = require("axios");
 const api = axios.create({
   baseURL: "http://localhost:3000/api",
-  timeout: 2000
+  timeout: 6000
 });
 
 export default {
@@ -9,7 +9,9 @@ export default {
     const response = await api.get("/recipes/search/", {
       params: { ingredients: query }
     });
+    console.log("getallrecipes" + response.data);
     return response.data;
+
     // await response.data.forEach(element => {
     //   console.log(JSON.stringify(element) + 'estamos aqui')
     // });

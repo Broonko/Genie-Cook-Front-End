@@ -1,48 +1,64 @@
 <template>
-  <v-container :style="cssProps" fluid class="genie">
+  <v-container fluid class="">
     <v-row>
-      <v-col class="mt-15" cols="12" md="10" lg="8">
-        <v-card class="mt-15" elevation="0">
-          <v-card-text>
-            <v-text-field
-              flat
-              background-color="white"
-              prepend-inner-icon="mdi-magnify"
-              color="black"
-              v-model="search"
-              label="Search recipes by ingredients"
-              placeholder="Enter separated by comas"
-              outlined
-              rounded
-              dense
-            ></v-text-field>
-            <v-btn
-              color="teal lighten-1"
-              dark
-              rounded
-              block
-              :to="{ name: 'Recipes', params: { search: search } }"
-              >search</v-btn
-            >
-          </v-card-text>
-        </v-card>
+      <v-col class="px-0" cols="12" md="10" lg="8">
+        <v-img
+          width="auto"
+          class="image d-flex align-end flex-column"
+          src="../assets/GenieTronco.png"
+          alt=""
+        >
+          <v-card class="mx-auto" width="70%" color="transparent" elevation="0">
+            <v-card-text>
+              <v-text-field
+                flat
+                background-color="white"
+                prepend-inner-icon="mdi-magnify"
+                color="black"
+                v-model="search"
+                label="Search recipes by ingredients"
+                placeholder="Enter separated by comas"
+                outlined
+                rounded
+                dense
+              ></v-text-field>
+              <v-btn
+                color="teal lighten-1"
+                dark
+                rounded
+                block
+                :to="{ name: 'Recipes', params: { search: search } }"
+                >search</v-btn
+              >
+            </v-card-text>
+          </v-card>
+        </v-img>
       </v-col>
     </v-row>
-
-    <v-row class="" align="center" height="250" width="250">
-      <v-card elevation="24" max-width="444" class="mx-auto mt-5">
-        <v-carousel height="300">
-          <v-carousel-item
-            v-for="(favourite, i) in favouriteList"
-            :key="i"
-            :src="favourite.image"
-            reverse-transition="fade-transition"
-            transition="fade-transition"
-          >
-            <p background-color="white">{{ favourite.title }}</p>
-          </v-carousel-item>
-        </v-carousel>
-      </v-card>
+    <v-row class="mt-10">
+      <v-col class="text-center">
+        <h2>Your Favourites</h2>
+        <v-divider></v-divider>
+      </v-col>
+    </v-row>
+    <v-row fluid class="d-flex" align="center" height="" width="">
+      <v-col cols="12">
+        <v-sheet rounded-corner class="pa-5" color="blue">
+          <v-card rounded-corner elevation="24" max-width="444" class="mx-auto">
+            <v-carousel height="300">
+              <v-carousel-item
+                v-for="(favourite, i) in favouriteList"
+                :key="i"
+                :src="favourite.image"
+                reverse-transition="fade-transition"
+                transition="fade-transition"
+              >
+                <p background-color="white">{{ favourite.title }}</p>
+              </v-carousel-item>
+            </v-carousel>
+          </v-card>
+        </v-sheet>
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -91,8 +107,13 @@ p {
   text-align: center;
   font-size: 18px;
 }
+
+.image {
+  object-fit: cover;
+}
+
 .genie {
-  background: src("../assets/genioFondo.png");
+  background: url("../assets/genioFondo.png");
 }
 .backgr {
   filter: hue-rotate(20deg);

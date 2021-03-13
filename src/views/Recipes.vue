@@ -1,5 +1,11 @@
 <template>
   <v-container class="fluid">
+    <v-row class="mt-5">
+      <v-col class="text-center">
+        <h2>Your Wishes</h2>
+        <v-divider></v-divider>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col class="d-flex flex-wrap">
         <v-card
@@ -12,14 +18,25 @@
           :key="idx"
         >
           <router-link
+            class="underline"
             :to="{ name: 'Recipe', params: { recipeid: recipe._id } }"
           >
-            <v-img height="300" width="300" :src="recipe.image"></v-img>
-
+            <v-img class="pa-2" height="300" width="300" :src="recipe.image">
+              <v-btn
+                icon
+                @click.prevent="toggleFavourites(idx)"
+                :color="isFavourite(idx) ? 'red' : 'grey'"
+              >
+                <v-avatar size="35" class="" color="white"
+                  ><v-icon>mdi-heart</v-icon></v-avatar
+                >
+              </v-btn>
+            </v-img>
             <v-card-title>
               {{ recipe.title }}
             </v-card-title>
           </router-link>
+
           <v-card-text>
             <v-row class="d-flex mx-2" align="center">
               Calories: {{ recipe.calories }} <br />
@@ -27,14 +44,8 @@
               Protein: {{ recipe.protein }} <br />
               Fat: {{ recipe.fat }}
             </v-row>
+
             <br />
-            <v-btn
-              icon
-              @click="toggleFavourites(idx)"
-              :color="isFavourite(idx) ? 'red' : 'grey'"
-            >
-              <v-icon>mdi-heart</v-icon>
-            </v-btn>
           </v-card-text>
         </v-card>
       </v-col>
@@ -59,6 +70,7 @@ export default {
   async mounted() {
     try {
       this.recipeList = await recipesService.getAllRecipes(this.search);
+      console.log("front" + this.recipeList);
     } catch (err) {
       console.log(err);
     }
@@ -77,4 +89,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.underline {
+  text-decoration: none;
+}
+</style>

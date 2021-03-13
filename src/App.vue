@@ -1,12 +1,15 @@
 <template>
   <v-app>
-    <v-app-bar color="white" absolute elevate-on-scroll shrink-on-scroll app>
-      <v-btn icon depressed class="my-auto ml-1" to="/">
+    <v-app-bar color="blue" absolute elevate-on-scroll shrink-on-scroll app>
+      <v-btn icon class="my-auto ml-1" to="/">
         <v-icon large> mdi-home </v-icon>
       </v-btn>
       <v-spacer></v-spacer>
 
-      <v-tabs justify="center">
+      <v-layout class="mx-0 px-0" align-content-center>
+        <v-img width="15" src="./assets/Logo1Genio.png"> </v-img>
+      </v-layout>
+      <!-- <v-tabs justify="center">
         <v-spacer></v-spacer>
         <v-btn text depressed class="tabs" to="/Tips">
           Tips & Ideas
@@ -14,7 +17,7 @@
         <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
-      </v-tabs>
+      </v-tabs> -->
 
       <v-spacer></v-spacer>
 
@@ -22,11 +25,10 @@
         <v-btn text @click="overlay = !overlay">Login</v-btn>
       </div>
       <div v-else class="my-auto">
-        <v-btn text x-large fab to="/Profile">
+        <v-btn text x- large fab to="/Profile">
           <v-icon>mdi-account-circle</v-icon>
         </v-btn>
       </div>
-      <v-spacer></v-spacer>
     </v-app-bar>
     <v-overlay
       :absolute="absolute"
@@ -61,8 +63,8 @@
         </v-btn> -->
     </v-overlay>
 
-    <v-main>
-      <router-view class="colorBack"></router-view>
+    <v-main fluid>
+      <router-view class=""></router-view>
     </v-main>
 
     <v-footer class="grey lighten-3" color="black">

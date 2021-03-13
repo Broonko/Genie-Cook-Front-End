@@ -7,24 +7,38 @@
             {{ recipe.title }}
           </v-card-title>
           <v-img :src="recipe.image"> </v-img>
-          <v-btn
-            align="end"
-            fab
-            large
-            background="black"
-            icon
-            @click="updateFavourites(recipe._id)"
-            :color="active ? 'red' : 'grey'"
-          >
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-
-          <v-card-subtitle v-for="(mea, id) in recipe.measurements" :key="id">
-            {{ mea }}
+          <v-row class="align-center mt-2">
+            <v-col cols="10" class="">
+              <h4 class="ml-3">Ingredients</h4>
+            </v-col>
+            <v-col cols="1">
+              <v-btn
+                large
+                background="black"
+                icon
+                @click="updateFavourites(recipe._id)"
+                :color="active ? 'red' : 'grey'"
+              >
+                <v-icon>mdi-heart</v-icon>
+              </v-btn>
+            </v-col>
+          </v-row>
+          <v-divider></v-divider>
+          <v-card-subtitle>
+            <p v-for="(mea, id) in recipe.measurements" :key="id">
+              {{ mea }}
+            </p>
           </v-card-subtitle>
-          <v-divider class="mx-4"></v-divider>
-          <v-card-text v-for="(step, i) in recipe.steps" :key="i">
-            {{ step }}
+          <v-row class="mt-2">
+            <v-col class="">
+              <h4 class="ml-3">Steps</h4>
+            </v-col>
+          </v-row>
+          <v-divider class=""></v-divider>
+          <v-card-text>
+            <p v-for="(step, i) in recipe.steps" :key="i">
+              {{ step }}
+            </p>
           </v-card-text>
         </v-card>
       </v-col>
