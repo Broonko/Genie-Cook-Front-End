@@ -1,23 +1,30 @@
 <template>
   <v-app>
-    <v-app-bar color="blue" absolute elevate-on-scroll shrink-on-scroll app>
-      <v-btn icon class="my-auto ml-1" to="/">
+    <v-app-bar
+      :src="require('@/assets/Fondo-header.png')"
+      color="blue lighten-1"
+      absolute
+      elevate-on-scroll
+      shrink-on-scroll
+      app
+    >
+      <v-btn icon dark class="my-auto ml-1" to="/">
         <v-icon large> mdi-home </v-icon>
       </v-btn>
       <v-spacer></v-spacer>
 
       <v-layout class="mx-0 px-0" align-content-center>
-        <v-img width="15" src="./assets/Logo1Genio.png"> </v-img>
+        <v-img width="15" src=""> </v-img>
       </v-layout>
-      <!-- <v-tabs justify="center">
-        <v-spacer></v-spacer>
-        <v-btn text depressed class="tabs" to="/Tips">
+      <v-tabs justify="center">
+        <!-- <v-spacer></v-spacer>
+        <v-btn dark text depressed class="tabs" to="/Tips">
           Tips & Ideas
         </v-btn>
-        <v-spacer></v-spacer>
+        <v-spacer></v-spacer> -->
 
         <v-spacer></v-spacer>
-      </v-tabs> -->
+      </v-tabs>
 
       <v-spacer></v-spacer>
 
@@ -25,7 +32,7 @@
         <v-btn text @click="overlay = !overlay">Login</v-btn>
       </div>
       <div v-else class="my-auto">
-        <v-btn text x- large fab to="/Profile">
+        <v-btn dark text x-large fab to="/Profile">
           <v-icon>mdi-account-circle</v-icon>
         </v-btn>
       </div>
@@ -64,13 +71,31 @@
     </v-overlay>
 
     <v-main fluid>
-      <router-view class=""></router-view>
+      <router-view class="grey lighten-3"></router-view>
     </v-main>
 
     <v-footer class="grey lighten-3" color="black">
-      <v-col class="text-center white-text" cols="12">
-        {{ new Date().getFullYear() }} — <strong>GenieCook</strong>
-      </v-col>
+      <!-- <v-col class="text-center white-text" cols="12"> -->
+      <v-row class="align-center">
+        <v-col class="pa-0 text-right">
+          <v-icon large>mdi-email</v-icon>
+        </v-col>
+        <v-col cols="6">
+          <v-text-field
+            dense
+            v-model="message2"
+            label="Newsletter"
+            clearable
+          ></v-text-field>
+        </v-col>
+        <v-col cols="3" class="footer pa-0">
+          {{ new Date().getFullYear() }}—GenieCook
+        </v-col>
+        <v-col class="pa-0">
+          <v-icon x-small>mdi-copyright</v-icon>
+        </v-col>
+      </v-row>
+      <!-- </v-col> -->
     </v-footer>
   </v-app>
 </template>
@@ -105,6 +130,9 @@ export default {
 };
 </script>
 <style>
+.footer {
+  font-size: 12px;
+}
 .tabs {
   margin: auto;
   border-radius: 20px;

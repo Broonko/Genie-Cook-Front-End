@@ -55,6 +55,7 @@
 
 <script>
 import recipesService from "@/services/recipesService";
+import profileService from "@/services/profileService";
 
 export default {
   name: "Recipes",
@@ -70,12 +71,21 @@ export default {
   async mounted() {
     try {
       this.recipeList = await recipesService.getAllRecipes(this.search);
-      console.log("front" + this.recipeList);
     } catch (err) {
       console.log(err);
     }
+    console.log(this.$route.params.recipeid);
+    profileService.getUser().then(response => {
+      console.log(response.favourites);
+      if (
+        response.favourites.find(elem => elem === this.$route.params.recipeid)
+      ) {
+        this.active = true;
+      } else {
+        this.active = false;
+      }
+    });
   },
-  computed: {},
   methods: {
     toggleFavourites: function(idx) {
       this.active[idx] === false

@@ -9,7 +9,7 @@
           alt=""
         >
           <v-card class="mx-auto" width="70%" color="transparent" elevation="0">
-            <v-card-text>
+            <v-card-text class="pa-1">
               <v-text-field
                 flat
                 background-color="white"
@@ -35,25 +35,31 @@
         </v-img>
       </v-col>
     </v-row>
-    <v-row class="mt-10">
+    <v-row class="mt-5">
       <v-col class="text-center">
         <h2>Your Favourites</h2>
         <v-divider></v-divider>
       </v-col>
     </v-row>
     <v-row fluid class="d-flex" align="center" height="" width="">
-      <v-col cols="12">
-        <v-sheet rounded-corner class="pa-5" color="blue">
-          <v-card rounded-corner elevation="24" max-width="444" class="mx-auto">
-            <v-carousel height="300">
+      <v-col cols="11" class="mx-auto">
+        <v-sheet rounded class="pa-6" color="blue lighten-3">
+          <v-card rounded elevation="20" max-width="444" class="mx-auto">
+            <v-carousel height="250">
               <v-carousel-item
                 v-for="(favourite, i) in favouriteList"
                 :key="i"
                 :src="favourite.image"
                 reverse-transition="fade-transition"
                 transition="fade-transition"
+                :to="{ name: 'Recipe', params: { recipeid: favourite.id } }"
               >
-                <p background-color="white">{{ favourite.title }}</p>
+                <router-link
+                  class="underline"
+                  :to="{ name: 'Recipe', params: { recipeid: favourite.id } }"
+                >
+                  <p>{{ favourite.title }}</p>
+                </router-link>
               </v-carousel-item>
             </v-carousel>
           </v-card>
@@ -68,17 +74,11 @@ import profileService from "@/services/profileService";
 import recipesService from "@/services/recipesService";
 
 export default {
-  // <div class="backgr">
-  // <v-img src="" no-repeat></v-img>
-  // ../assets/genioFondo.png
   name: "Home",
   data() {
     return {
       search: "",
-      favouriteList: [],
-      cssProps: {
-        backgroundImage: `url(${require("../assets/genioFondo.png")})`
-      }
+      favouriteList: []
     };
   },
   mounted() {
@@ -89,7 +89,8 @@ export default {
           recipesService.getRecipesinformation(id).then(response => {
             this.favouriteList.push({
               image: response.image,
-              title: response.title
+              title: response.title,
+              id: response._id
             });
           });
         });
@@ -103,13 +104,18 @@ export default {
 
 <style lang="scss" scoped>
 p {
-  background-color: black;
+  background-color: white;
   text-align: center;
   font-size: 18px;
 }
 
 .image {
   object-fit: cover;
+}
+
+.underline {
+  text-decoration: none;
+  color: black;
 }
 
 .genie {

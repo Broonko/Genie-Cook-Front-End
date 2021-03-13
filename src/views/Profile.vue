@@ -3,7 +3,7 @@
     <v-row>
       <v-col class="card">
         <v-card
-          color="blue lighten-3"
+          color="blue lighten-4"
           elevation="5"
           width="400"
           outlined
@@ -96,65 +96,30 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">User Profile</span>
+          <span class="headline">Add Recipe</span>
         </v-card-title>
         <v-card-text>
           <v-container>
-            <v-row>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Legal first name*" required></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal middle name"
-                  hint="example of helper text only on focus"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6" md="4">
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field label="Email*" required></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Password*"
-                  type="password"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="[
-                    'Skiing',
-                    'Ice hockey',
-                    'Soccer',
-                    'Basketball',
-                    'Hockey',
-                    'Reading',
-                    'Writing',
-                    'Coding',
-                    'Basejump'
-                  ]"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
+            <v-row v-for="(recipe, idx) in favouriteList" :key="idx">
+              <v-col>
+                <v-card class="my-2" elevation="5">
+                  <v-row>
+                    <v-col class="pa-0" cols="5">
+                      <v-img max-width="150" :src="recipe.image"></v-img>
+                    </v-col>
+                    <v-col cols="5">
+                      {{ recipe.title }}
+                    </v-col>
+                    <v-col class="pa-0" cols="1">
+                      <v-btn icon @click="addPlanning(idx)">
+                        <v-icon> mdi-plus </v-icon>
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-card>
               </v-col>
             </v-row>
           </v-container>
-          <small>*indicates required field</small>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -172,23 +137,18 @@
 
 <script>
 import profileService from "@/services/profileService";
+import recipesService from "@/services/recipesService";
 
 export default {
   name: "Profile",
   data() {
     return {
       userProfile: "",
+      favouriteList: [],
       items: ["No diet", "Vegetarian", "Vegan", "Paleo", "Ketogenic"],
       value: [],
       items1: ["Gluten", "Peanut", "Seafood", "Wheat", "Dairy"],
       value1: [],
-      monday: [],
-      tuesday: [],
-      wednesday: [],
-      thursday: [],
-      friday: [],
-      saturday: [],
-      sunday: [],
       dialog: false,
       days: [
         {
@@ -222,11 +182,23 @@ export default {
       .getUser()
       .then(response => {
         this.userProfile = response;
-        console.log(response);
+        response.favourites.forEach(id => {
+          recipesService.getRecipesinformation(id).then(response => {
+            this.favouriteList.push({
+              image: response.image,
+              title: response.title
+            });
+          });
+        });
       })
       .catch(err => {
         console.log(err);
       });
+  },
+  methods: {
+    addPlanning: function(idx) {
+      console.log(this.userProfile.favourites[idx]);
+    }
   }
 };
 </script>
