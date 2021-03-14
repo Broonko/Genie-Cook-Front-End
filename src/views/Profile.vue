@@ -3,7 +3,8 @@
     <v-row>
       <v-col class="card">
         <v-card
-          color="blue lighten-4"
+          dark
+          color="#063150"
           elevation="5"
           width="400"
           outlined
@@ -13,6 +14,14 @@
           <!-- <v-img height="auto" width="auto" src="../assets/profile.png"></v-img> -->
 
           <v-card-title>{{ userProfile.name }}</v-card-title>
+          <v-spacer></v-spacer>
+          <v-avatar elevation="2" class="mx-3 my-3" width="100" height="100">
+            <v-img
+              class="text-center"
+              position="center, center"
+              :src="require('@/assets/avatarGif.gif')"
+            />
+          </v-avatar>
 
           <v-card-text>
             <v-row class="d-flex ml-1" align="center">
