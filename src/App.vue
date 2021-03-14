@@ -15,16 +15,18 @@
         <v-icon large> mdi-home </v-icon>
       </v-btn>
       <v-spacer></v-spacer>
-
-      <v-tabs justify="center">
+      <v-toolbar-side-icon x-large>
+        <v-img src="./assets/genieLogo3.png" height="100px" width="100px" />
+      </v-toolbar-side-icon>
+      <!-- <v-tabs justify="center">
         <v-spacer></v-spacer>
-        <!-- <v-btn dark text depressed class="tabs" to="/Tips">
+        <v-btn dark text depressed class="tabs" to="/Tips">
           Tips & Ideas
         </v-btn> -->
-        <v-spacer></v-spacer>
+      <!-- <v-spacer></v-spacer>
 
         <v-spacer></v-spacer>
-      </v-tabs>
+      </v-tabs> -->
 
       <v-spacer></v-spacer>
 
