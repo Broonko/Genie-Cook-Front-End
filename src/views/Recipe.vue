@@ -3,9 +3,18 @@
     <v-row>
       <v-col>
         <v-card elevation="5">
-          <v-card-title>
-            {{ recipe.title }}
-          </v-card-title>
+          <v-col cols="7">
+            <v-card-title>
+              {{ recipe.title }}
+            </v-card-title>
+          </v-col>
+          <v-col cols="1">
+            <v-btn icon>
+              <v-icon>
+                mdi-arrow-left
+              </v-icon>
+            </v-btn>
+          </v-col>
           <v-img :src="recipe.image"> </v-img>
           <v-row class="align-center mt-2">
             <v-col cols="10" class="">

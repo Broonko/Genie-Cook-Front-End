@@ -67,19 +67,17 @@
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-expansion-panels>
-          <v-expansion-panel v-for="(item, i) in days" :key="i">
+          <v-expansion-panel v-for="(day, i) in days" :key="i">
             <v-expansion-panel-header>
-              {{ item.title }}
+              {{ day }}
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-card v-for="(meal, idx) in item.meals" :key="idx">
+              <v-card v-for="(time, idx) in times" :key="idx">
                 <div class="d-flex flex-no-wrap justify-space-between">
                   <div>
-                    <v-card-title
-                      class="headline"
-                      v-text="meal.mealTime"
-                    ></v-card-title>
-                    <v-card-subtitle v-text="meal.title"> </v-card-subtitle>
+                    <v-card-title class="headline" v-text="time"></v-card-title>
+                    <v-card-subtitle v-text="formatRecipe(day, time)">
+                    </v-card-subtitle>
                     <v-card-actions>
                       <v-btn
                         class="ml-2 mt-5"
@@ -88,6 +86,7 @@
                         small
                         v-bind="attrs"
                         v-on="on"
+                        @click="selectMeal(day, time)"
                       >
                         recipe
                       </v-btn>
@@ -95,7 +94,7 @@
                   </div>
 
                   <v-avatar class="ma-3" size="125" tile>
-                    <v-img :src="meal.image"></v-img>
+                    <v-img :src="time"></v-img>
                   </v-avatar>
                 </div>
               </v-card>
@@ -120,7 +119,10 @@
                       {{ recipe.title }}
                     </v-col>
                     <v-col class="pa-0" cols="1">
-                      <v-btn icon @click="addPlanning(idx)">
+                      <v-btn
+                        icon
+                        @click="addPlanning(idx, selectedTime, selectedDay)"
+                      >
                         <v-icon> mdi-plus </v-icon>
                       </v-btn>
                     </v-col>
@@ -135,9 +137,6 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue darken-1" text @click="dialog = false">
-            Add
-          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -146,12 +145,13 @@
 
 <script>
 import profileService from "@/services/profileService";
-import recipesService from "@/services/recipesService";
 
 export default {
   name: "Profile",
   data() {
     return {
+      selectedDay: "",
+      selectedTime: "",
       userProfile: "",
       favouriteList: [],
       items: ["No diet", "Vegetarian", "Vegan", "Paleo", "Ketogenic"],
@@ -160,55 +160,48 @@ export default {
       value1: [],
       dialog: false,
       days: [
-        {
-          title: "monday",
-          meals: [
-            {
-              mealTime: "Breakfast",
-              title: "hola",
-              id: "",
-              image: ""
-            },
-            {
-              mealTime: "Lunch",
-              title: "hola",
-              id: "",
-              image: ""
-            },
-            {
-              mealTime: "Dinner",
-              title: "hola",
-              id: "",
-              image: ""
-            }
-          ]
-        }
-      ]
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      times: ["Breakfast", "Lunch", "Dinner"],
+      meals: {}
     };
   },
-  mounted() {
-    profileService
-      .getUser()
-      .then(response => {
-        this.userProfile = response;
-        response.favourites.forEach(id => {
-          recipesService.getRecipesinformation(id).then(response => {
-            this.favouriteList.push({
-              image: response.image,
-              title: response.title
-            });
-          });
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  async mounted() {
+    this.userProfile = await profileService.getUser();
+    this.meals = this.userProfile.mealPlanning;
+    this.favouriteList = this.userProfile.favourites;
   },
   methods: {
-    addPlanning: function(idx) {
-      console.log(this.userProfile.favourites[idx]);
+    addPlanning: async function(idx, time, day) {
+      this.meals = await profileService.addMeal(
+        this.userProfile.favourites[idx]._id,
+        day.toLowerCase(),
+        time.toLowerCase()
+      );
+    },
+    formatRecipe: function(day, time) {
+      if (
+        this.meals[day.toLowerCase()] &&
+        this.meals[day.toLowerCase()][time.toLowerCase()]
+      ) {
+        return this.meals[day.toLowerCase()][time.toLowerCase()]["title"];
+      } else {
+        return "";
+      }
+    },
+    selectMeal: function(day, time) {
+      console.log(day, time);
+      this.selectedDay = day;
+      this.selectedTime = time;
     }
-  }
+  },
+  computed: {}
 };
 </script>
 

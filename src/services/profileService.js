@@ -10,5 +10,13 @@ export default {
       headers: { token: localStorage.getItem("token") }
     });
     return response.data;
+  },
+  async addMeal(id, day, time) {
+    const response = await api.put(
+      `/users/planning/${id}/${day}/${time}`,
+      {},
+      { headers: { token: localStorage.getItem("token") } }
+    );
+    return response.data;
   }
 };

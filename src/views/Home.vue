@@ -41,7 +41,7 @@
       </v-col>
     </v-row>
     <v-row fluid class="d-flex" align="center" height="" width="">
-      <v-col cols="12" class="mx-auto">
+      <v-col cols="11" class="mx-auto">
         <v-sheet rounded class="pa-2" color="#063150">
           <v-card rounded elevation="20" max-width="444" class="mx-auto">
             <v-carousel height="200">
@@ -70,7 +70,6 @@
 
 <script>
 import profileService from "@/services/profileService";
-import recipesService from "@/services/recipesService";
 
 export default {
   name: "Home",
@@ -80,23 +79,9 @@ export default {
       favouriteList: []
     };
   },
-  mounted() {
-    profileService
-      .getUser()
-      .then(response => {
-        response.favourites.forEach(id => {
-          recipesService.getRecipesinformation(id).then(response => {
-            this.favouriteList.push({
-              image: response.image,
-              title: response.title,
-              id: response._id
-            });
-          });
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  async mounted() {
+    const user = await profileService.getUser();
+    this.favouriteList = user.favourites;
   }
 };
 </script>

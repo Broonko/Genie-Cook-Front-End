@@ -16,7 +16,7 @@
       </v-btn>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon x-large>
-        <v-img src="./assets/genieLogo3.png" height="100px" width="100px" />
+        <v-img src="./assets/genieLogo3.png" height="100px" width="130px" />
       </v-toolbar-side-icon>
       <!-- <v-tabs justify="center">
         <v-spacer></v-spacer>
@@ -85,13 +85,7 @@
           <v-icon dark large>mdi-email</v-icon>
         </v-col>
         <v-col cols="6">
-          <v-text-field
-            dark
-            dense
-            v-model="message2"
-            label="Newsletter"
-            clearable
-          ></v-text-field>
+          <v-text-field dark dense label="Newsletter" clearable></v-text-field>
         </v-col>
         <v-col cols="3" class="footer pa-0 white--text ">
           {{ new Date().getFullYear() }}-
@@ -148,9 +142,5 @@ export default {
 .tabs {
   margin: auto;
   border-radius: 20px;
-}
-.logo {
-  display: flex;
-  margin-top: 10px;
 }
 </style>

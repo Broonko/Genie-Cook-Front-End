@@ -107,6 +107,7 @@ export default {
         authService
           .register(this.name, this.email, this.password)
           .then(response => {
+            console.log("in front");
             localStorage.setItem("token", response.token);
             this.$router.go();
           });
