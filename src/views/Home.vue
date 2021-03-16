@@ -22,7 +22,7 @@
                 dense
               ></v-text-field>
               <v-btn
-                color="#063150"
+                color="yellow darken-3"
                 dark
                 rounded
                 block

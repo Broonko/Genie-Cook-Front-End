@@ -18,16 +18,6 @@
       <v-toolbar-side-icon x-large>
         <v-img src="./assets/genieLogo3.png" height="100px" width="130px" />
       </v-toolbar-side-icon>
-      <!-- <v-tabs justify="center">
-        <v-spacer></v-spacer>
-        <v-btn dark text depressed class="tabs" to="/Tips">
-          Tips & Ideas
-        </v-btn> -->
-      <!-- <v-spacer></v-spacer>
-
-        <v-spacer></v-spacer>
-      </v-tabs> -->
-
       <v-spacer></v-spacer>
 
       <div v-if="!token" class="my-auto">

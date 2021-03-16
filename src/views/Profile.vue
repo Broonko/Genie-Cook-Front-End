@@ -63,7 +63,6 @@
         <v-divider></v-divider>
       </v-col>
     </v-row>
-
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-expansion-panels>
@@ -72,7 +71,13 @@
               {{ day }}
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-card v-for="(time, idx) in times" :key="idx">
+              <v-card
+                class="my-3"
+                elevation="5"
+                color="blue lighten-4"
+                v-for="(time, idx) in times"
+                :key="idx"
+              >
                 <div class="d-flex flex-no-wrap justify-space-between">
                   <div>
                     <v-card-title class="headline" v-text="time"></v-card-title>
@@ -88,13 +93,12 @@
                         v-on="on"
                         @click="selectMeal(day, time)"
                       >
-                        recipe
+                        Add
                       </v-btn>
                     </v-card-actions>
                   </div>
-
                   <v-avatar class="ma-3" size="125" tile>
-                    <v-img :src="time"></v-img>
+                    <v-img :src="formatImage(day, time)"></v-img>
                   </v-avatar>
                 </div>
               </v-card>
@@ -174,7 +178,9 @@ export default {
   },
   async mounted() {
     this.userProfile = await profileService.getUser();
-    this.meals = this.userProfile.mealPlanning;
+    if (this.userProfile.mealPlanning) {
+      this.meals = this.userProfile.mealPlanning;
+    }
     this.favouriteList = this.userProfile.favourites;
   },
   methods: {
@@ -184,6 +190,7 @@ export default {
         day.toLowerCase(),
         time.toLowerCase()
       );
+      this.dialog = false;
     },
     formatRecipe: function(day, time) {
       if (
@@ -191,6 +198,16 @@ export default {
         this.meals[day.toLowerCase()][time.toLowerCase()]
       ) {
         return this.meals[day.toLowerCase()][time.toLowerCase()]["title"];
+      } else {
+        return "";
+      }
+    },
+    formatImage: function(day, time) {
+      if (
+        this.meals[day.toLowerCase()] &&
+        this.meals[day.toLowerCase()][time.toLowerCase()]
+      ) {
+        return this.meals[day.toLowerCase()][time.toLowerCase()]["image"];
       } else {
         return "";
       }
