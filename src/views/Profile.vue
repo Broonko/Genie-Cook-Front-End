@@ -153,26 +153,7 @@ export default {
       days: [
         {
           title: "monday",
-          meals: [
-            {
-              mealTime: "Breakfast",
-              title: "hola",
-              id: "",
-              image: ""
-            },
-            {
-              mealTime: "Lunch",
-              title: "hola",
-              id: "",
-              image: ""
-            },
-            {
-              mealTime: "Dinner",
-              title: "hola",
-              id: "",
-              image: ""
-            }
-          ]
+          meals: []
         }
       ]
     };

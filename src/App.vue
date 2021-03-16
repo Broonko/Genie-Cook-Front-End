@@ -81,12 +81,7 @@
           <v-icon large>mdi-email</v-icon>
         </v-col>
         <v-col cols="6">
-          <v-text-field
-            dense
-            v-model="message2"
-            label="Newsletter"
-            clearable
-          ></v-text-field>
+          <v-text-field dense label="Newsletter" clearable></v-text-field>
         </v-col>
         <v-col cols="3" class="footer pa-0">
           {{ new Date().getFullYear() }}—GenieCook
@@ -116,7 +111,6 @@ export default {
       foo: "0",
       absolute: false,
       opacity: 0.46,
-
       zIndex: 5,
       overlay: false,
       dialog: true,
