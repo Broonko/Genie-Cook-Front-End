@@ -1,16 +1,16 @@
 const axios = require("axios");
 const api = axios.create({
-  baseURL: "http://localhost:3000/api",
-  timeout: 2000,
+  baseURL: "https://genie-cook.herokuapp.com//api",
+  timeout: 6000
 });
 
 export default {
   async register(name, email, password) {
-     const response = await api.post('/auth/signup', {
+    const response = await api.post("/auth/signup", {
       name: name,
       email: email,
-      password : password
-    })
+      password: password
+    });
     return response.data;
-  },
-}
+  }
+};

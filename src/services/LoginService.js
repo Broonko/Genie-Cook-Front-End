@@ -1,7 +1,7 @@
 const axios = require("axios");
 const api = axios.create({
-  baseURL: "http://localhost:3000/api",
-  timeout: 2000
+  baseURL: "https://genie-cook.herokuapp.com//api",
+  timeout: 6000
 });
 
 export default {
