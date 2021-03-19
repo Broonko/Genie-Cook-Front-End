@@ -51,11 +51,11 @@
                 :src="favourite.image"
                 reverse-transition="fade-transition"
                 transition="fade-transition"
-                :to="{ name: 'Recipe', params: { recipeid: favourite.id } }"
+                :to="{ name: 'Recipe', params: { recipeid: favourite._id } }"
               >
                 <router-link
                   class="underline"
-                  :to="{ name: 'Recipe', params: { recipeid: favourite.id } }"
+                  :to="{ name: 'Recipe', params: { recipeid: favourite._id } }"
                 >
                   <p>{{ favourite.title }}</p>
                 </router-link>
