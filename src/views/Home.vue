@@ -69,7 +69,7 @@
 
               <template v-else>
                 <v-carousel-item
-                  src="@/assets/salad.gif"
+                  src="@/assets/Verde.gif"
                   reverse-transition="fade-transition"
                   transition="fade-transition"
                 >
@@ -92,7 +92,7 @@ export default {
     return {
       search: "",
       favouriteList: [],
-      x: false
+      x: true
     };
   },
   async mounted() {

@@ -15,8 +15,8 @@
         <v-icon large> mdi-home </v-icon>
       </v-btn>
       <v-spacer></v-spacer>
-      <v-toolbar-side-icon x-large>
-        <v-img src="./assets/genieLogo3.png" height="100px" width="130px" />
+      <v-toolbar-side-icon class="ml-6" x-large>
+        <v-img src="./assets/GENIE_COOK_1.png" height="100px" width="180px" />
       </v-toolbar-side-icon>
       <v-spacer></v-spacer>
 

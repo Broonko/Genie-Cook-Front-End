@@ -11,8 +11,6 @@
           class="d-flex flex-wrap my-5 mx-5"
           cols="4"
         >
-          <!-- <v-img height="auto" width="auto" src="../assets/profile.png"></v-img> -->
-
           <v-card-title>{{ userProfile.name }}</v-card-title>
           <v-spacer></v-spacer>
           <v-avatar elevation="2" class="mx-3 my-3" width="100" height="100">
