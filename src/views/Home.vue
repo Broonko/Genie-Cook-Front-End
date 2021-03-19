@@ -45,21 +45,36 @@
         <v-sheet rounded class="pa-2" color="#063150">
           <v-card rounded elevation="20" max-width="444" class="mx-auto">
             <v-carousel height="200">
-              <v-carousel-item
-                v-for="(favourite, i) in favouriteList"
-                :key="i"
-                :src="favourite.image"
-                reverse-transition="fade-transition"
-                transition="fade-transition"
-                :to="{ name: 'Recipe', params: { recipeid: favourite._id } }"
-              >
-                <router-link
-                  class="underline"
+              {{ tokenChange() }}
+              <template v-if="x === true">
+                <v-carousel-item
+                  v-for="(favourite, i) in favouriteList"
+                  :key="i"
+                  :src="favourite.image"
+                  reverse-transition="fade-transition"
+                  transition="fade-transition"
                   :to="{ name: 'Recipe', params: { recipeid: favourite._id } }"
                 >
-                  <p>{{ favourite.title }}</p>
-                </router-link>
-              </v-carousel-item>
+                  <router-link
+                    class="underline"
+                    :to="{
+                      name: 'Recipe',
+                      params: { recipeid: favourite._id }
+                    }"
+                  >
+                    <p>{{ favourite.title }}</p>
+                  </router-link>
+                </v-carousel-item>
+              </template>
+
+              <template v-else>
+                <v-carousel-item
+                  src="@/assets/salad.gif"
+                  reverse-transition="fade-transition"
+                  transition="fade-transition"
+                >
+                </v-carousel-item>
+              </template>
             </v-carousel>
           </v-card>
         </v-sheet>
@@ -76,12 +91,21 @@ export default {
   data() {
     return {
       search: "",
-      favouriteList: []
+      favouriteList: [],
+      x: false
     };
   },
   async mounted() {
     const user = await profileService.getUser();
     this.favouriteList = user.favourites;
+  },
+  methods: {
+    tokenChange: function() {
+      if (!localStorage.getItem("token")) {
+        this.x = false;
+      }
+      return;
+    }
   }
 };
 </script>
